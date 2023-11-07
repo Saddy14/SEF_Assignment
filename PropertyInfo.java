@@ -2,7 +2,6 @@ public class PropertyInfo {
     
     private int propertyId;
     private static int propertyIdCounter;
-   
     private String propertyName;
     private String propertyAddress;
     private String propertyType;
@@ -20,11 +19,9 @@ public class PropertyInfo {
     private boolean isRentable;
     // rules pdf
 
-    PropertyInfo () {
-
+    PropertyInfo() {
         this.propertyId = propertyIdCounter;
         propertyIdCounter++;
-
     }
     
     public String getPropertyName() {

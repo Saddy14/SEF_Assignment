@@ -1,6 +1,7 @@
 public abstract class User {
 
-    private String userId;
+    private int userId;
+    private static int userIdCounter;
     private String password;
     private String firstName, lastName;
     private String email;
@@ -20,7 +21,12 @@ public abstract class User {
     //     this.dateOfBirth = dateOfBirth;
     //     this.gender = gender;
     // }
-    
+    User() {
+
+        this.userId = userIdCounter;
+        userIdCounter++;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -87,12 +93,12 @@ public abstract class User {
     }
 
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
