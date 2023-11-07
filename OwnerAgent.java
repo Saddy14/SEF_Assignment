@@ -18,9 +18,11 @@ public class OwnerAgent extends User{
         myProperties.add(new PropertyInfo());
     }
 
-        // owner.removeProperty();
-        // owner.updateProperty();
-        // owner.viewProperties();    
+    // owner.removeProperty();
+    // owner.updateProperty();
+    // owner.viewProperties();
+    
+    
 
     
     

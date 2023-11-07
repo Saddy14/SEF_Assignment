@@ -1,14 +1,8 @@
 public class PropertyInfo {
     
     private int propertyId;
-    
-    public int getPropertyId() {
-        return propertyId;
-    }
-    public void setPropertyId(int propertyId) {
-        this.propertyId = propertyId;
-    }
-
+    private static int propertyIdCounter;
+   
     private String propertyName;
     private String propertyAddress;
     private String propertyType;
@@ -25,6 +19,13 @@ public class PropertyInfo {
     private boolean hasFireplace;   
     private boolean isRentable;
     // rules pdf
+
+    PropertyInfo () {
+
+        this.propertyId = propertyIdCounter;
+        propertyIdCounter++;
+
+    }
     
     public String getPropertyName() {
         return propertyName;
@@ -117,15 +118,25 @@ public class PropertyInfo {
         this.isRentable = isRentable;
     }
 
+    public int getPropertyId() {
+        return propertyId;
+    }
+    public void setPropertyId(int propertyId) {
+        this.propertyId = propertyId;
+    }
+
     @Override
     public String toString() {
-        return "PropertyInfo [propertyName=" + propertyName + ", propertyAddress=" + propertyAddress + ", propertyType="
-                + propertyType + ", propertyArea=" + propertyArea + ", propertyRent=" + propertyRent
-                + ", utilityDeposit=" + utilityDeposit + ", securityDeposit=" + securityDeposit + ", keyDeposit="
-                + keyDeposit + ", numberOfRoom=" + numberOfRoom + ", numberOfBathroom=" + numberOfBathroom
-                + ", isFurnished=" + isFurnished + ", hasParking=" + hasParking + ", hasPool=" + hasPool
-                + ", hasFireplace=" + hasFireplace + ", isRentable=" + isRentable + "]";
+        return "PropertyInfo [propertyId=" + propertyId + ", propertyIdCounter=" + propertyIdCounter + ", propertyName="
+                + propertyName + ", propertyAddress=" + propertyAddress + ", propertyType=" + propertyType
+                + ", propertyArea=" + propertyArea + ", propertyRent=" + propertyRent + ", utilityDeposit="
+                + utilityDeposit + ", securityDeposit=" + securityDeposit + ", keyDeposit=" + keyDeposit
+                + ", numberOfRoom=" + numberOfRoom + ", numberOfBathroom=" + numberOfBathroom + ", isFurnished="
+                + isFurnished + ", hasParking=" + hasParking + ", hasPool=" + hasPool + ", hasFireplace=" + hasFireplace
+                + ", isRentable=" + isRentable + "]";
     }
+
+   
 
     
 
