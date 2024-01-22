@@ -8,8 +8,7 @@
         justify-content: center;
     }
 
-    input[type=text],
-    input[type=password] {
+    input[type=text] {
         width: 80%;
         padding: 12px 20px;
         margin: 8px 0px;
@@ -28,10 +27,13 @@
     }
 
     
-    .login {
+    .signup {
         margin-left:40%;
-
+        text-align: center;
 }
+
+    .login {
+        margin-left: 60%;}
 
     button[type=submit]:hover {
         opacity: 0.6;
@@ -51,32 +53,31 @@
 
     p {
         color: #000000;
+        text-align: center;
     }
 </style>
 
 <head>
-    <title>Login</title>
+    <title>Signup</title>
 </head>
 
 <body>
     <div>
-        <img src="images/username.png" alt="Username" width="50" height="50">
-        <input type="text" placeholder="Username" name="username" required>
-
+        <input type="text" required>
+        <input type="text" required>
+        <input type="text" required>
+        <input type="text" required>
+        <input type="text" required>
         <br>
 
-        <img src="images/password.png" alt="Password" width="50" height="50">
-        <input type="password" placeholder="Password" name="password" required>
-
-        <br><br><br>
-
-        <button class="login" type="submit">Login</button>
+        <button class="signup" type="submit">Signup</button>
         
         <br>
 
-        <p style="padding-inline-start: 200px; padding-inline-end: 50px;">Or</p>
+        <p>Or</p>
 
-        <p>Don't have an account?</p>
-        <button class="signup" type="submit">Sign Up</button>
+        <p>Already have an account?<button class="login" type="submit">Login</button></p>
+        
     </div>
+
 </body>
