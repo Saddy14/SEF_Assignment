@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    body {
+        background-color: #b5b3a0;
+        align-items: center;
+        justify-content: center;
+    }
+
+    input[type=text],
+    input[type=password] {
+        width: 80%;
+        padding: 12px 20px;
+        margin: 8px 0px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: b   order-box;
+    }
+
+    button[type=submit] {
+        background-color: #faedcd;
+        color: black;
+        padding: 5px 10px;
+        border:black, ;
+        cursor:pointer;
+        width: fit-content;
+    }
+
+    
+    .login {
+        margin-left:40%;
+
+}
+
+    button[type=submit]:hover {
+        opacity: 0.6;
+    }
+
+    div {
+        border-radius: 20px;
+        border-color: #d4a373;
+        background-color: #fefae0;
+        padding: 20px;
+        width: 30%;
+        margin: 0 auto;
+        margin-top: auto;
+        text-align: left;
+        position: absolute;
+    }
+
+    p {
+        color: #000000;
+    }
+</style>
+
+<head>
+    <title>Login</title>
+</head>
+
+<body>
+    <div>
+        <img src="images/username.png" alt="Username" width="50" height="50">
+        <input type="text" placeholder="Username" name="username" required>
+
+        <br>
+
+        <img src="images/password.png" alt="Password" width="50" height="50">
+        <input type="password" placeholder="Password" name="password" required>
+
+        <br><br><br>
+
+        <button class="login" type="submit">Login</button>
+        
+        <br>
+
+        <p style="padding-inline-start: 200px; padding-inline-end: 50px;">Or</p>
+
+        <p>Don't have an account?</p>
+        <button class="signup" type="submit">Sign Up</button>
+    </div>
+</body>
