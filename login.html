@@ -3,55 +3,67 @@
 
 <style>
     body {
-        background-color: #b5b3a0;
-        align-items: center;
-        justify-content: center;
-    }
+    font-family: Arial, sans-serif;
+    background-color: #b5b3a0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    
+}
 
-    input[type=text],
-    input[type=password] {
-        width: 80%;
-        padding: 12px 20px;
+div {
+    border-radius: 20px;
+    border-color: #d4a373;
+    background-color: #fefae0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    width: 50vh;
+}
+
+img {
+    margin-right: 10px;
+}
+
+input[type=text],
+input[type=password] {
+        padding: 10px;
         margin: 8px 0px;
         display: inline-block;
         border: 1px solid #ccc;
         box-sizing: border-box;
     }
 
-    button[type=submit] {
-        background-color: #faedcd;
-        color: black;
-        padding: 5px 10px;
-        border:black, ;
-        cursor:pointer;
-        width: fit-content;
-    }
-
-    
-    .login {
-        margin-left:40%;
-
+button {
+    background-color: #faedcd;
+    padding: 5px 10px;
+    cursor:pointer;
 }
 
-    button[type=submit]:hover {
-        opacity: 0.6;
-    }
+p {
+    margin: 0;
+    display:flex;
+    align-items: center;
+}
 
-    div {
-        border-radius: 20px;
-        border-color: #d4a373;
-        background-color: #fefae0;
-        padding: 20px;
-        width: 30%;
-        margin: 0 auto;
-        margin-top: auto;
-        text-align: left;
-        position: absolute;
-    }
+.signup {
+    background: none;
+    border: none;
+    padding: 0;
+    color: black;
+    cursor: pointer;
+    text-decoration: underline;
+}
 
-    p {
-        color: #000000;
-    }
+.signup:hover {
+    color: black;
+}
+
 </style>
 
 <head>
@@ -60,23 +72,34 @@
 
 <body>
     <div>
-        <img src="images/username.png" alt="Username" width="50" height="50">
-        <input type="text" placeholder="Username" name="username" required>
+        <p>
+            <img src="images/username.png" alt="Username" width="45" height="45">
+            <input type="text" placeholder="Username" name="username" required>
+        </p>
 
         <br>
 
-        <img src="images/password.png" alt="Password" width="50" height="50">
-        <input type="password" placeholder="Password" name="password" required>
+        <p>
+            <img src="images/password.png" alt="Password" width="45" height="45">
+            <input type="password" placeholder="Password" name="password" required>
+        </p>
 
-        <br><br><br>
+        <br><br>
 
         <button class="login" type="submit">Login</button>
         
+        <br><br>
+
+        <p>Or</p>
+
         <br>
 
-        <p style="padding-inline-start: 200px; padding-inline-end: 50px;">Or</p>
+        <p>Don't have an account? &nbsp
+            <button class="signup">
+                <a href="signup.html">Sign Up</a>
+            </button>
+        </p>
 
-        <p>Don't have an account?</p>
-        <button class="signup" type="submit">Sign Up</button>
+        <br>
     </div>
 </body>
