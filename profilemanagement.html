@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+    <title>Change Password</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+    header {
+        position: fixed;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        border-radius: 5px;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+
+    }
+
+    img {
+      vertical-align: middle;
+    }
+
+    #logo {
+        display: inline-block;
+        font-size: 30px;
+        margin-left: -27px;
+        vertical-align: -14px;
+        }
+
+    #contactsupport {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    #profilemanagement {
+    border-radius: 20px;
+    background-color: #faedcd;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    width: 70vh;
+    margin-top: 80px;
+}
+
+.input {
+        padding: 10px;
+        margin: 8px 0px;
+        width: 300px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+button {
+    background-color: #fefae0;
+    padding: 5px 10px;
+    cursor:pointer;
+    border-width: 1px;
+}
+
+p {
+    margin: 0;
+    display:flex;
+    align-items: center;
+}
+
+</style>
+</head>
+
+<body>
+    <header>
+        <div id="logo">
+            <img src="images/logo.png" alt="H" width="100" height="100"> 
+            <h1 id="logo">omeWoW</h1>
+        </div>
+        
+        <a href="profile.html">
+            <img src="images/profile.png" alt="Profile" width="50" height="50">
+        </a>
+    </header>
+
+    <div class="menu">
+        <div>
+            <a href="profilemanagement.html">
+            <button>Profile Management</button>
+        </a>
+        </div>
+
+        <div>
+            <a href="changepassword.html">
+            <button>Change Password</button>
+            </a>
+        </div>
+    </div>
+
+    <div id="profilemanagement">
+        <h1>Profile Management</h1>
+            <p>
+                <img src="images/x.png" alt="X" width="45" height="45">
+                <input class="input" type="text" placeholder=" Username" name="username" required>
+            </p>
+    
+            <p>
+                <img src="images/x.png" alt="X" width="45" height="45">
+                <input class="input" type="password" placeholder=" Password" name="password" required>
+            </p>
+    
+            <p>
+                <img src="images/x.png" alt="X" width="45" height="45">
+                <input class="input"type="email" placeholder=" Email" name="email" required>
+            </p>
+    
+            <p>
+                <img src="images/x.png" alt="X" width="45" height="45">
+                <input class="input" type="tel" placeholder=" Phone Number" name="phonenumber" required>
+            </p>
+    
+            <p>
+                <img src="images/x.png" alt="X" width="45" height="45">
+                <select class="input" name="gender" required>
+                    <option disabled selected>Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option disabled>Nah Nah Nah, Only Two Options</option>
+                </select>
+            </p>
+    
+            <p>
+                <img src="images/x.png" alt="X" width="45" height="45">
+                <select class="input" name="usertype" required>
+                    <option disabled selected>User Type</option>
+                    <option value="owner/agent">Owner / Agent </option>
+                    <option value="tenant">Tenant</option>
+                </select>
+            </p>
+        <br>
+        <div>
+            <button class="login" type="submit">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCancel&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button> &nbsp&nbsp&nbsp&nbsp
+            <button class="signup" type="submit">Save Changes</button>
+        </div>
+    </div>
+
+    <a href="contactsupport.html">
+        <img id="contactsupport" src="images/contactsupport.png" alt="Contact Support" width="50" height="50">
+    </a>
+
+</body>
+
+</html>
