@@ -43,7 +43,7 @@
                         <a href="">Unsettled Invoices</a>
                         <a href="">Booking Requests</a>
                         <a href="">Profile</a>
-                        <a href="logout.html">Logout</a>
+                        <a href="index.html">Logout</a>
                     </div>
                 </div>
             </div>
@@ -276,5 +276,29 @@
         <p>&#169; HomeWoW All Right Reserved</p>
     </div>
 </body>
+<script>
+    window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const username = urlParams.get('username');
+
+      if (username) {
+        document.getElementById('account-name').textContent = username;
+      }
+    };
+    </script>
+
+    <!-- <a id="dashboard-link">Go to Dashboard</a> -->
+<!-- 
+    <script>
+    window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const username = urlParams.get('username');
+    
+      if (username) {
+        document.getElementById('account-name').textContent = username;
+        document.getElementById('tenant-dashboard.html').href = `tenant-dashboard.html?username=${username}`;
+      }
+    };
+    </script> -->
 
 </html>
