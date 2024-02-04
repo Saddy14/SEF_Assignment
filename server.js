@@ -60,6 +60,16 @@ app.post('/login', (req, res) => {
     .catch(error => console.error(error));
 });
 
+app.post('/signup', (req, res) => {
+  const { name, password, email, phone, gender, userType } = req.body;
+
+  const newUser = new UserModel({ name, password, email, phone, gender, userType });
+
+  newUser.save()
+    .then(() => res.redirect('/login.html'))
+    .catch(error => console.error(error));
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
