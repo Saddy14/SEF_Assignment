@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomeWoW | Tenant</title>
+    <title>HomeWoW</title>
     <!-- Link To CSS -->
     <link rel="stylesheet" href="style.css">
     <!-- Box Icons -->
@@ -18,13 +18,13 @@
     <header>
         <div class="nav container">
             <!-- Logo -->
-            <a href="tenant.html" class="logo"><i class='bx bx-home-alt-2'></i>HomeWoW</a>
+            <a href="owner-agent-home.html" class="logo"><i class='bx bx-home-alt-2'></i>HomeWoW</a>
             <!-- Menu Icon -->
             <input type="checkbox" name="" id="menu">
             <label for="menu"><i class='bx bx-menu' id="menu-icon"></i></label>
             <!-- Navigation Links -->
             <ul class="navbar">
-                <li><a href="#home">Home</a></li>
+                <li><a href="owner-agent-home.html">Home</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#how">How It Works</a></li>
                 <li><a href="#properties">Properties</a></li>
@@ -33,24 +33,28 @@
             <div class="user-profile">
                 <div class="profile-info">
                     <div id="profile-picture" class="avatar"></div>
-                    <span id="account-name">Username</span>
+                    <span id="account-name">Owner / Agent</span>
                 </div>
                 <div class="dropdown">
-                    <button id="dropdown-button" onclick="toggleDropdown()"><i class='bx bx-chevron-down'></i></button>
+                    <button id="dropdown-button" onclick="toggleDropdown()">
+                        <i class='bx bx-chevron-down'></i>
+                    </button>
                     <div id="dropdown-menu">
-                        <a href="tenant-dashboard.html">Dashboard</a>
-                        <a href="">Tenancies</a>
-                        <a href="">Unsettled Invoices</a>
-                        <a href="">Booking Requests</a>
-                        <a href="">Profile</a>
+                        <a href="owner-agent-dashboard.html">Dashboard</a>
+                        <a href="owner-agent-my-profile.html">My Profile</a>
+                        <a href="owner-agent-my-property.html">My Property</a>
+                        <a href="owner-agent-tenancy-agreement-request.html">Tenancy Agreement Request</a>
+                        <a href="owner-agent-payment-log.html">Payment Log</a>
+                        <a href="owner-agent-appointment.html">Appointment</a>
                         <a href="logout.html">Logout</a>
+
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <script src="tenant.js"></script>
+    <script src="owner-agent-home.js"></script>
 
     <!-- Home -->
     <section class="home container" id="home">
@@ -82,6 +86,7 @@
     </section>
 
     <!-- How It Works -->
+
     <section class="how container" id="how">
         <div class="heading">
             <span>How It Works</span>

@@ -1,4 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;800&display=swap');
+
+* {
+    font-family: 'Lexend', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    scroll-padding-top: 3rem;
+    list-style: none;
+    text-decoration: none;
+}
 
 :root {
     --light: #f6f6f9;
@@ -8,21 +19,14 @@
     --dark-grey: #AAAAAA;
     --dark: #363949;
     --danger: #D32F2F;
-	--light-danger: #FECDD3;
+    --light-danger: #FECDD3;
     --warning: #FBC02D;
     --light-warning: #FFF2C6;
     --success: #388E3C;
     --light-success: #BBF7D0;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-.bx{
+.bx {
     font-size: 1.7rem;
 }
 
@@ -315,7 +319,7 @@ body{
 }
 
 .content main .header{
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: space-between;
     grid-gap: 16px;
