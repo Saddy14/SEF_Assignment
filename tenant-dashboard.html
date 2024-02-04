@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Link To CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tenant.css">
+    <!-- Box Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="icon" href="img/icon.png" type="image/x-icon">
+</head>
+
+<script src="tenant.js"></script>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="nav container">
+            <!-- Logo -->
+            <a href="tenant.html" class="logo"><i class='bx bx-home-alt-2'></i>HomeWoW</a>
+            <!-- Menu Icon -->
+            <input type="checkbox" name="" id="menu">
+            <label for="menu"><i class='bx bx-menu' id="menu-icon"></i></label>
+            <!-- Navigation Links -->
+            <ul class="navbar">
+                <li><a href="tenant.html#home">Home</a></li>
+                <li><a href="tenant.html#about">About Us</a></li>
+                <li><a href="tenant.html#how">How It Works</a></li>
+                <li><a href="tenant.html#properties">Properties</a></li>
+            </ul>
+            <!-- Profile Icon & Name -->
+            <div class="user-profile">
+                <div class="profile-info">
+                    <div id="profile-picture" class="avatar"></div>
+                    <span id="account-name">Username</span>
+                </div>
+                <div class="dropdown">
+                    <button id="dropdown-button" onclick="toggleDropdown()"><i class='bx bx-chevron-down'></i></button>
+                    <div id="dropdown-menu">
+                        <a href="">Dashboard</a>
+                        <a href="">Tenancies</a>
+                        <a href="">Unsettled Invoices</a>
+                        <a href="">Booking Requests</a>
+                        <a href="">Profile</a>
+                        <a href="logout.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul class="side-menu">
+            <li><a href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li><a href="#"><i class='bx bx bx-home'></i>Tenancies</a></li>
+            <li><a href="#"><i class='bx bx-coin-stack'></i>Unsettled Invoices</a></li>
+            <li><a href="#"><i class='bx bxs-inbox'></i>Booking Requests</a></li>
+            <li><a href="#"><i class='bx bx bx-user'></i>Profile</a></li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="logout.html" class="logout">
+                    <i class='bx bx-log-out-circle'></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- End of Sidebar -->
+
+    <div class="content">
+        <!-- Your content goes here -->
+    </div>
+
+
+</body>
+
+</html>
