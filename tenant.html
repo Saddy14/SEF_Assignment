@@ -18,7 +18,7 @@
     <header>
         <div class="nav container">
             <!-- Logo -->
-            <a href="index.html" class="logo"><i class='bx bx-home-alt-2'></i>HomeWoW</a>
+            <a href="tenant.html" class="logo"><i class='bx bx-home-alt-2'></i>HomeWoW</a>
             <!-- Menu Icon -->
             <input type="checkbox" name="" id="menu">
             <label for="menu"><i class='bx bx-menu' id="menu-icon"></i></label>
@@ -38,12 +38,12 @@
                 <div class="dropdown">
                     <button id="dropdown-button" onclick="toggleDropdown()"><i class='bx bx-chevron-down'></i></button>
                     <div id="dropdown-menu">
-                        <a href="">Dashboard</a>
+                        <a href="tenant-dashboard.html">Dashboard</a>
                         <a href="">Tenancies</a>
                         <a href="">Unsettled Invoices</a>
                         <a href="">Booking Requests</a>
                         <a href="">Profile</a>
-                        <a href="index.html">Logout</a>
+                        <a href="logout.html">Logout</a>
                     </div>
                 </div>
             </div>
@@ -82,7 +82,6 @@
     </section>
 
     <!-- How It Works -->
-
     <section class="how container" id="how">
         <div class="heading">
             <span>How It Works</span>
@@ -277,15 +276,5 @@
         <p>&#169; HomeWoW All Right Reserved</p>
     </div>
 </body>
-<script>
-    window.onload = function() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const username = urlParams.get('username');
-    
-      if (username) {
-        document.getElementById('account-name').textContent = username;
-      }
-    };
-    </script>
 
 </html>
