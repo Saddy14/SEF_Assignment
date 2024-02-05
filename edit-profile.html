@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Profile | HomeWoW</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -142,18 +142,19 @@
     });
     </script> -->
 
-    <script>
-        document.getElementById('cancel-button').addEventListener('click', function() {
-          const urlParams = new URLSearchParams(window.location.search);
-          const userType = urlParams.get('userType');
-        
-          if (userType === 'tenant') {
+<script>
+    document.getElementById('cancel-button').addEventListener('click', function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const userType = urlParams.get('userType');
+
+        if (userType === 'tenant') {
             window.location.href = '/tenant-dashboard.html';
-          } 
-          else if (userType === 'Owner/Agent') {
+        }
+        else if (userType === 'Owner/Agent') {
             window.location.href = '/owner-agent.html';
-          }
-         
-        });
-        </script>
+        }
+
+    });
+</script>
+
 </html>

@@ -20,9 +20,8 @@
         </a>
         <ul class="side-menu">
             <li><a href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
-            <li><a id="edit-profile-link" href="#"><i class='bx bx bx-user'></i>My Profile</a></li>
-            <!-- <a id="edit-profile-link" href="#">Edit Profile</a> -->
-            <li><a href="#"><i class='bx bx bx-home'></i>My Property</a></li>
+            <li><a id="edit-profile-link" href=""><i class='bx bx bx-user'></i>My Profile</a></li>
+            <li><a href=""><i class='bx bx bx-home'></i>My Property</a></li>
             <!--<li class="active"><a href="#"><i class='bx bx-analyse'></i>Analytics</a></li> -->
             <li><a href="#"><i class='bx bx-message-square-dots'></i>Tenancy Agreement<br>Request</a></li>
             <li><a href="#"><i class='bx bx bx-detail'></i>Payment Logs</a></li>
@@ -210,20 +209,20 @@
     <script src="owner-agent.js"></script>
 </body>
 <script>
-    window.onload = function() {
-      fetch('/current-user')
-        .then(response => response.json())
-        .then(user => {
-        //   document.getElementById('account-name').textContent = user.name;
-    
-          // Update the href of the dashboard link
-        //   document.getElementById('dashboard-link').href = `/tenant-dashboard.html?username=${user.name}&userType=${user.userType}`;
-    
-          // Update the href of the edit profile link
-          document.getElementById('edit-profile-link').href = `/edit-profile.html?username=${user.name}&userType=${user.userType}`;
-        })
-        .catch(error => console.error(error));
+    window.onload = function () {
+        fetch('/current-user')
+            .then(response => response.json())
+            .then(user => {
+                //   document.getElementById('account-name').textContent = user.name;
+
+                // Update the href of the dashboard link
+                //   document.getElementById('dashboard-link').href = `/tenant-dashboard.html?username=${user.name}&userType=${user.userType}`;
+
+                // Update the href of the edit profile link
+                document.getElementById('edit-profile-link').href = `/edit-profile.html?username=${user.name}&userType=${user.userType}`;
+            })
+            .catch(error => console.error(error));
     };
-    </script>
+</script>
 
 </html>
