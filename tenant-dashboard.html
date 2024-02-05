@@ -101,10 +101,10 @@
                 //   document.getElementById('dashboard-link').href = `/tenant-dashboard.html?username=${user.name}&userType=${user.userType}`;
 
                 // Update the href of the edit profile link
-                document.getElementById('edit-profile-link').href = `/edit-profile.html?username=${user.name}&userType=${user.userType}`;
+                document.getElementById('edit-profile-link').href = `/edit-profile.html?username=${user.name}&userType=${user.userType}&userID=${user.id}`;
 
                 // Update the href of the edit profile link in the sidebar
-                document.getElementById('sidebar-edit-profile-link').href = `/edit-profile.html?username=${user.name}&userType=${user.userType}`;
+                document.getElementById('sidebar-edit-profile-link').href = `/edit-profile.html?username=${user.name}&userType=${user.userType}&userID=${user.id}`;
             })
             .catch(error => console.error(error));
     };

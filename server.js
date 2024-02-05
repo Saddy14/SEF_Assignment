@@ -47,32 +47,6 @@ class User {
   }
 }
 
-// app.post('/login', (req, res) => {
-//   const { email, password } = req.body;
-
-//   UserModel.findOne({ email: email })
-//     .then(user => {
-//       if (!user || password !== user.password) { // Note: In a real application, never store passwords in plain text
-//         res.redirect('/login.html?loginError=Invalid email or password');
-//       } else {
-//         const loggedInUser = new User(user._id, user.name, user.email, user.userType);
-//         req.session.user = loggedInUser;
-//         console.log(loggedInUser);
-
-//         // Check the userType and redirect accordingly
-//         if (user.userType === 'tenant') {
-//           res.redirect(`/tenant.html?username=${user.name}`);
-//         }
-//         else if (user.userType === 'Owner/Agent') {
-//           res.redirect('/owner-agent.html');
-//         }
-//         else if (user.userType === 'Admin'){
-//           res.redirect('/admin-dashboard.html');
-//         }
-//       }
-//     })
-//     .catch(error => console.error(error));
-// });
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
 
@@ -87,10 +61,10 @@ app.post('/login', (req, res) => {
 
         // Check the userType and redirect accordingly
         if (user.userType === 'tenant') {
-          res.redirect(`/tenant.html?username=${user.name}&userType=${user.userType}`);
+          res.redirect(`/tenant.html?username=${user.name}&userType=${user.userType}&id=${user._id}`);
         }
         else if (user.userType === 'Owner/Agent') {
-          res.redirect(`/owner-agent.html?username=${user.name}&userType=${user.userType}`);
+          res.redirect(`/owner-agent.html?username=${user.name}&userType=${user.userType}&id=${user._id}`);
         }
         else if (user.userType === 'Admin'){
           res.redirect(`/admin-dashboard.html?userType=${user.userType}`);
@@ -126,6 +100,32 @@ app.get('/current-user', (req, res) => {
   } else {
     res.status(401).json({ message: 'Not logged in' });
   }
+});
+
+app.use(express.json());
+
+app.post('/update-profile', (req, res) => {
+  const { id, name, email, phone } = req.body;
+
+  console.log(`Updating profile for user with id: ${id}`);
+
+  UserModel.findOneAndUpdate({ _id: id }, { name, email, phone }, { new: true })
+    .then(user => {
+        if (!user) {
+            console.log(`No user found with id: ${id}`);
+            res.status(404).json({ message: 'User not found' });
+        } else {
+            console.log(`Updated profile for user with id: ${id}`);
+            res.json({ message: 'Profile updated successfully' });
+            // if (user.userType === 'tenant') {
+            //   res.redirect(`/tenant-dashboard.html`);
+            // }
+            // else if (user.userType === 'Owner/Agent') {
+            //   res.redirect(`/owner-agent.html`);
+            // }
+        }
+    })
+    .catch(error => console.error(`Error updating user: ${error}`));
 });
 
 app.listen(port, () => {
