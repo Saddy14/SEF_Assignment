@@ -42,10 +42,10 @@
                     <button id="dropdown-button" onclick="toggleDropdown()"><i class='bx bx-chevron-down'></i></button>
                     <div id="dropdown-menu">
                         <a href="">Dashboard</a>
+                        <a href="">Profile</a>
                         <a href="">Tenancies</a>
                         <a href="">Unsettled Invoices</a>
                         <a href="">Booking Requests</a>
-                        <a href="">Profile</a>
                         <a href="index.html">Logout</a>
                     </div>
                 </div>
@@ -57,10 +57,10 @@
     <div class="sidebar">
         <ul class="side-menu">
             <li><a href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li><a href="#"><i class='bx bx bx-user'></i>Profile</a></li>
             <li><a href="#"><i class='bx bx bx-home'></i>Tenancies</a></li>
             <li><a href="#"><i class='bx bx-coin-stack'></i>Unsettled Invoices</a></li>
             <li><a href="#"><i class='bx bxs-inbox'></i>Booking Requests</a></li>
-            <li><a href="#"><i class='bx bx bx-user'></i>Profile</a></li>
         </ul>
         <ul class="side-menu">
             <li>
@@ -81,14 +81,14 @@
 </body>
 
 <script>
-    window.onload = function() {
-      fetch('/current-user')
-        .then(response => response.json())
-        .then(user => {
-          document.getElementById('account-name').textContent = user.name;
-        })
-        .catch(error => console.error(error));
+    window.onload = function () {
+        fetch('/current-user')
+            .then(response => response.json())
+            .then(user => {
+                document.getElementById('account-name').textContent = user.name;
+            })
+            .catch(error => console.error(error));
     };
-    </script>
+</script>
 
 </html>
