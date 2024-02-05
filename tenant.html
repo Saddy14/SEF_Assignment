@@ -33,7 +33,7 @@
             <div class="user-profile">
                 <div class="profile-info">
                     <div id="profile-picture" class="avatar"></div>
-                    <span id="account-name">Username</span>
+                    <span id="account-name">Loading...</span>
                 </div>
                 <div class="dropdown">
                     <button id="dropdown-button" onclick="toggleDropdown()"><i class='bx bx-chevron-down'></i></button>
@@ -276,29 +276,14 @@
         <p>&#169; HomeWoW All Right Reserved</p>
     </div>
 </body>
-<script>
-    window.onload = function() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const username = urlParams.get('username');
-
-      if (username) {
-        document.getElementById('account-name').textContent = username;
-      }
-    };
-    </script>
-
-    <!-- <a id="dashboard-link">Go to Dashboard</a> -->
-<!-- 
     <script>
-    window.onload = function() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const username = urlParams.get('username');
-    
-      if (username) {
-        document.getElementById('account-name').textContent = username;
-        document.getElementById('tenant-dashboard.html').href = `tenant-dashboard.html?username=${username}`;
-      }
-    };
-    </script> -->
-
+        window.onload = function() {
+          fetch('/current-user')
+            .then(response => response.json())
+            .then(user => {
+              document.getElementById('account-name').textContent = user.name;
+            })
+            .catch(error => console.error(error));
+        };
+        </script>
 </html>

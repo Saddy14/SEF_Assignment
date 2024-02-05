@@ -93,6 +93,14 @@ app.get('/logout', (req, res) => {
   });
 });
 
+app.get('/current-user', (req, res) => {
+  if (req.session.user) {
+    res.json(req.session.user);
+  } else {
+    res.status(401).json({ message: 'Not logged in' });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
