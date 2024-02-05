@@ -89,6 +89,7 @@ app.get('/logout', (req, res) => {
     if(err) {
       return console.log(err);
     }
+    console.log("Logout successful");
     res.redirect('/index.html');
   });
 });
