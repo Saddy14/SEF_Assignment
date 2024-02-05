@@ -44,7 +44,7 @@ section {
 header {
     display: block;
     width: 100%;
-    background: var(--bg-color-color);
+    background: var(--bg-color);
     position: fixed;
     top: 0;
     left: 0;
