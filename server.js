@@ -47,6 +47,32 @@ class User {
   }
 }
 
+// app.post('/login', (req, res) => {
+//   const { email, password } = req.body;
+
+//   UserModel.findOne({ email: email })
+//     .then(user => {
+//       if (!user || password !== user.password) { // Note: In a real application, never store passwords in plain text
+//         res.redirect('/login.html?loginError=Invalid email or password');
+//       } else {
+//         const loggedInUser = new User(user._id, user.name, user.email, user.userType);
+//         req.session.user = loggedInUser;
+//         console.log(loggedInUser);
+
+//         // Check the userType and redirect accordingly
+//         if (user.userType === 'tenant') {
+//           res.redirect(`/tenant.html?username=${user.name}`);
+//         }
+//         else if (user.userType === 'Owner/Agent') {
+//           res.redirect('/owner-agent.html');
+//         }
+//         else if (user.userType === 'Admin'){
+//           res.redirect('/admin-dashboard.html');
+//         }
+//       }
+//     })
+//     .catch(error => console.error(error));
+// });
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
 
@@ -61,13 +87,13 @@ app.post('/login', (req, res) => {
 
         // Check the userType and redirect accordingly
         if (user.userType === 'tenant') {
-          res.redirect(`/tenant.html?username=${user.name}`);
+          res.redirect(`/tenant.html?username=${user.name}&userType=${user.userType}`);
         }
         else if (user.userType === 'Owner/Agent') {
-          res.redirect('/owner-agent.html');
+          res.redirect(`/owner-agent.html?username=${user.name}&userType=${user.userType}`);
         }
         else if (user.userType === 'Admin'){
-          res.redirect('/admin-dashboard.html');
+          res.redirect(`/admin-dashboard.html?userType=${user.userType}`);
         }
       }
     })

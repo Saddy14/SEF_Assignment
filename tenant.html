@@ -38,7 +38,8 @@
                 <div class="dropdown">
                     <button id="dropdown-button" onclick="toggleDropdown()"><i class='bx bx-chevron-down'></i></button>
                     <div id="dropdown-menu">
-                        <a href="tenant-dashboard.html">Dashboard</a>
+                        <!-- <a href="tenant-dashboard.html?username=<username>&userType=<userType>">Dashboard</a> -->
+                        <a id="dashboard-link" href="#">Dashboard</a>
                         <a href="edit-profile.html">Profile</a>
                         <a href="">Tenancies</a>
                         <a href="">Unsettled Invoices</a>
@@ -276,14 +277,17 @@
         <p>&#169; HomeWoW All Right Reserved</p>
     </div>
 </body>
-    <script>
-        window.onload = function() {
-          fetch('/current-user')
-            .then(response => response.json())
-            .then(user => {
-              document.getElementById('account-name').textContent = user.name;
-            })
-            .catch(error => console.error(error));
-        };
+        <script>
+            window.onload = function () {
+                fetch('/current-user')
+                    .then(response => response.json())
+                    .then(user => {
+                        document.getElementById('account-name').textContent = user.name;
+
+                        // Update the href of the anchor tag
+                        document.getElementById('dashboard-link').href = `/tenant-dashboard.html?username=${user.name}&userType=${user.userType}`;
+                    })
+                    .catch(error => console.error(error));
+            };
         </script>
 </html>

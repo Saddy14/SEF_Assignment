@@ -126,5 +126,34 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript"></script>
 </body>
+<!-- <script>
+    document.getElementById('cancel-button').addEventListener('click', function() {
+      var userType = loggedInUser.userType; // replace this with how you get userType
+    
+      if (userType === 'tenant') {
+        window.location.href = '/tenant-page.html';
+      } else if (userType === 'Owner / Agent') {
+        window.location.href = '/owner-agent-page.html';
+      } else if (userType === 'Admin') {
+        window.location.href = '/admin-page.html';
+      } else {
+        window.location.href = '/default-page.html';
+      }
+    });
+    </script> -->
 
+    <script>
+        document.getElementById('cancel-button').addEventListener('click', function() {
+          const urlParams = new URLSearchParams(window.location.search);
+          const userType = urlParams.get('userType');
+        
+          if (userType === 'tenant') {
+            window.location.href = '/tenant-dashboard.html';
+          } 
+          else if (userType === 'Owner/Agent') {
+            window.location.href = '/owner-agent.html';
+          }
+         
+        });
+        </script>
 </html>

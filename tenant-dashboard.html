@@ -42,7 +42,7 @@
                     <button id="dropdown-button" onclick="toggleDropdown()"><i class='bx bx-chevron-down'></i></button>
                     <div id="dropdown-menu">
                         <a href="">Dashboard</a>
-                        <a href="edit-profile.html">Profile</a>
+                        <a id="sidebar-edit-profile-link" href="#">Profile</a>
                         <a href="">Tenancies</a>
                         <a href="">Unsettled Invoices</a>
                         <a href="">Booking Requests</a>
@@ -57,7 +57,7 @@
     <div class="sidebar">
         <ul class="side-menu">
             <li><a href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
-            <li><a href="#"><i class='bx bx bx-user'></i>Profile</a></li>
+            <li><a id="edit-profile-link" href="#"><i class='bx bx bx-user'></i>Profile</a></li>
             <li><a href="#"><i class='bx bx bx-home'></i>Tenancies</a></li>
             <li><a href="#"><i class='bx bx-coin-stack'></i>Unsettled Invoices</a></li>
             <li><a href="#"><i class='bx bxs-inbox'></i>Booking Requests</a></li>
@@ -79,13 +79,32 @@
 
 
 </body>
-
+<!-- 
 <script>
     window.onload = function () {
         fetch('/current-user')
             .then(response => response.json())
             .then(user => {
                 document.getElementById('account-name').textContent = user.name;
+            })
+            .catch(error => console.error(error));
+    };
+</script> -->
+<script>
+    window.onload = function () {
+        fetch('/current-user')
+            .then(response => response.json())
+            .then(user => {
+                document.getElementById('account-name').textContent = user.name;
+
+                // Update the href of the dashboard link
+                //   document.getElementById('dashboard-link').href = `/tenant-dashboard.html?username=${user.name}&userType=${user.userType}`;
+
+                // Update the href of the edit profile link
+                document.getElementById('edit-profile-link').href = `/edit-profile.html?username=${user.name}&userType=${user.userType}`;
+
+                // Update the href of the edit profile link in the sidebar
+                document.getElementById('sidebar-edit-profile-link').href = `/edit-profile.html?username=${user.name}&userType=${user.userType}`;
             })
             .catch(error => console.error(error));
     };
