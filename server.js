@@ -63,11 +63,11 @@ app.post('/login', (req, res) => {
         if (user.userType === 'tenant') {
           res.redirect(`/tenant.html?username=${user.name}`);
         }
-        else if (user.userType === 'Owner / Agent') {
+        else if (user.userType === 'Owner/Agent') {
           res.redirect('/owner-agent.html');
         }
         else if (user.userType === 'Admin'){
-          res.redirect('/admin.html');
+          res.redirect('/admin-dashboard.html');
         }
       }
     })
