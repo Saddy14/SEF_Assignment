@@ -13,6 +13,14 @@ mongoose.connect('mongodb://localhost:27017/homewow')
 const Schema = mongoose.Schema;
 const mySchema = new Schema({}, { strict: false }); // Use an empty schema as an example
 
+const session = require('express-session');
+
+app.use(session({
+  secret: 'chicken',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // Note: a secure cookie requires an HTTPS connection
+}));
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
@@ -30,22 +38,29 @@ app.get('/users', (req, res) => {
   .catch(error => console.error(error));
 });
 
+class User {
+  constructor(id, name, email, userType) {
+    this.id = id;
+    this.name = name;
+    this.email = email;
+    this.userType = userType;
+  }
+}
+
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
 
   UserModel.findOne({ email: email })
     .then(user => {
+      if (!user || password !== user.password) { // Note: In a real application, never store passwords in plain text
+        res.redirect('/login.html?loginError=Invalid email or password');
+      } else {
+        const loggedInUser = new User(user._id, user.name, user.email, user.userType);
+        req.session.user = loggedInUser;
+        console.log(loggedInUser);
 
-      if (!user) {
-        res.redirect('/login.html?loginError=Invalid email or password');
-      } 
-      else if (password !== user.password) { // Note: In a real application, never store passwords in plain text
-        res.redirect('/login.html?loginError=Invalid email or password');
-      } 
-      else {
         // Check the userType and redirect accordingly
         if (user.userType === 'tenant') {
-          // res.redirect('/tenant.html');
           res.redirect(`/tenant.html?username=${user.name}`);
         }
         else if (user.userType === 'Owner / Agent') {
@@ -54,7 +69,6 @@ app.post('/login', (req, res) => {
         else if (user.userType === 'Admin'){
           res.redirect('/admin.html');
         }
-
       }
     })
     .catch(error => console.error(error));
@@ -68,6 +82,15 @@ app.post('/signup', (req, res) => {
   newUser.save()
     .then(() => res.redirect('/login.html'))
     .catch(error => console.error(error));
+});
+
+app.get('/logout', (req, res) => {
+  req.session.destroy(err => {
+    if(err) {
+      return console.log(err);
+    }
+    res.redirect('/index.html');
+  });
 });
 
 app.listen(port, () => {
