@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="owner-agent.css">
+    <link rel="stylesheet" href="style.css">
     <title>Owner / Agent | HomeWoW</title>
     <link rel="icon" href="img/icon.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="owner-agent-home.html" class="logo">
@@ -28,12 +29,10 @@
             <!--<li class="active"><a href="#"><i class='bx bx-analyse'></i>Analytics</a></li> -->
         </ul>
         <ul class="side-menu">
-            <li>
-                <a href="logout.html" class="logout">
-                    <i class='bx bx-log-out-circle'></i>
-                    Logout
-                </a>
-            </li>
+            <ul class="side-menu">
+                <li><a href="owner-agent-contact-us.html" class="contact-us"><i class='bx bx bx-phone'></i>Contact Us</a></li>
+                <li><a href="logout.html" class="logout"><i class='bx bx-log-out-circle'></i>Logout</a></li>
+            </ul>
         </ul>
     </div>
     <!-- End of Sidebar -->
@@ -68,220 +67,177 @@
                     <h1>My Profile</h1>
                 </div>
 
-
-                <div class="ant-tabs ant-tabs-top Tabs_wrapper__ie1Rx">
-                    <div role="tablist" class="ant-tabs-nav">
-                        <div class="ant-tabs-nav-wrap">
-                            <div class="ant-tabs-nav-list" style="transform:translate(0px, 0px)"></div>
-                            <div class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"></div>
+                <div class="container light-style flex-grow-1 container-p-y">
+                    <h4 class="font-weight-bold py-3 mb-4">
+                        Account settings
+                    </h4>
+                    <div class="card overflow-hidden">
+                        <div class="row no-gutters row-bordered row-border-light">
+                            <div class="col-md-3 pt-0">
+                                <div class="list-group list-group-flush account-settings-links">
+                                    <a class="list-group-item list-group-item-action active" data-toggle="list"
+                                        href="#account-general">General</a>
+                                    <a class="list-group-item list-group-item-action" data-toggle="list"
+                                        href="#account-change-password">Change password</a>
+                                    <a class="list-group-item list-group-item-action" data-toggle="list"
+                                        href="#account-info">Info</a>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade active show" id="account-general">
+                                        <div class="card-body media align-items-center">
+                                            <img src="img/userprofile.jpg" alt class="d-block ui-w-80">
+                                            <div class="media-body ml-4">
+                                                <label class="btn btn-outline-primary">
+                                                    Upload new photo
+                                                    <input type="file" class="account-settings-fileinput">
+                                                </label> &nbsp;
+                                                <button type="button" class="btn btn-default md-btn-flat">Reset</button>
+                                            </div>
+                                        </div>
+                                        <hr class="border-light m-0">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label class="form-label">Name</label>
+                                                <input id="name" type="text" class="form-control" placeholder="Your Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">E-mail</label>
+                                                <input id="email" type="text" class="form-control mb-1" placeholder="yourmail@gmail.com">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Phone</label>
+                                                <input id="phone" type="text" class="form-control" placeholder="+60 (12) 345 6789">
+                                            </div>
+                                            <div class="text-right mt-3">
+                                                <button  id="general-save-changes-button" type="button" class="btn btn-primary">Save changes</button>&nbsp;
+                                                <button id="general-cancel-button" type="button" class="btn btn-default">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="account-change-password">
+                                        <div class="card-body pb-2">
+                                            <div class="form-group">
+                                                <label class="form-label">Current Password</label>
+                                                <input type="password" class="form-control" id="current-password" placeholder="current Password">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">New Password</label>
+                                                <input type="password" class="form-control" id="new-password" placeholder="At least 8 characters">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Repeat New Password</label>
+                                                <input type="password" class="form-control" id="repeat-new-password" placeholder="At least 8 characters">
+                                            </div>
+                                            <div class="text-right mt-3">
+                                                <button  id="change-password-save-changes-button" type="button" class="btn btn-primary">Save changes</button>&nbsp;
+                                                <button id="change-password-cancel-button" type="button" class="btn btn-default">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="account-info">
+                                        <div class="card-body pb-2">
+                                            <div class="form-group">
+                                                <label class="form-label">Bio</label>
+                                                <textarea class="form-control" rows="5"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Birth Date</label>
+                                                <input type="date" class="form-control" value="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Gender</label>
+                                                <select class="custom-select">
+                                                    <option>Rather Not To Tell</option>
+                                                    <option>Female</option>
+                                                    <option>Male</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">State</label>
+                                                <select class="custom-select">
+                                                    <option>Johor</option>
+                                                    <option>Kedah</option>
+                                                    <option>Kelantan</option>
+                                                    <option>Melaka</option>
+                                                    <option>Negeri Sembilan</option>
+                                                    <option>Pahang</option>
+                                                    <option>Perak</option>
+                                                    <option>Perlis</option>
+                                                    <option>Pulau Pinang</option>
+                                                    <option>Sabah</option>
+                                                    <option>Sarawak</option>
+                                                    <option>Selangor</option>
+                                                    <option>Terengganu</option>
+                                                </select>
+                                            </div>
+                                            <div class="text-right mt-3">
+                                                <button id="save-changes-button" type="button" class="btn btn-primary">Save changes</button>&nbsp;
+                                                <button id="info-cancel-button" type="button" class="btn btn-default">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="ant-tabs-nav-operations ant-tabs-nav-operations-hidden">
-                        <button type="button" class="ant-tabs-nav-more" style="visibility:hidden;order:1" tabindex="-1" aria-hidden="true" aria-haspopup="listbox" aria-controls="null-more-popup" id="null-more" aria-expanded="false">
-                            <span role="img" aria-label="ellipsis" class="anticon anticon-ellipsis">
-                                <svg viewBox="64 64 896 896" focusable="false" data-icon="ellipsis" width="1em" height="1em" fill="currentColor" aria-hidden="true">
-                                    <path d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"></path>
-                                </svg>
-                            </span>
-                        </button>
-                    </div>
+                    <!-- <div class="text-right mt-3">
+                        <button id="save-changes-button" type="button" class="btn btn-primary">Save changes</button>&nbsp;
+                        <button id="cancel-button" type="button" class="btn btn-default">Cancel</button>
+                    </div> -->
                 </div>
-                
-                <div class="ant-tabs-content-holder">
-                    <div class="ant-tabs-content ant-tabs-content-top">
-                        <div role="tabpanel" tabindex="0" aria-hidden="false" class="ant-tabs-tabpane ant-tabs-tabpane-active">
-                            <div class="flex flex-col gap-7">
-                                <section>
-                                    <form class="ant-form ant-form-vertical w-full md:w-2/4">
-                                        <div class="grid grid-cols-12 gap-4 mb-4">
-                                            <div class="ant-form-item col-span-6 mb-0">
-                                                <div class="ant-row ant-form-item-row">
-                                                    <div class="ant-col ant-form-item-label">
-                                                        <label class="" title="Name">Name</label>
-                                                    </div>
+                <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+                <script type="text/javascript"></script>
+                <script src="client.js"></script>
 
-                                                    <div class="ant-col ant-form-item-control">
-                                                        <div class="ant-form-item-control-input">
-                                                            <div class="ant-form-item-control-input-content">
-                                                                <input placeholder="Name" disabled="" class="ant-input ant-input-disabled TextInput_input__F_9FC" type="text" value=""/></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                    
-                                                <div class="ant-form-item col-span-6 mb-0">
-                                                    <div class="ant-row ant-form-item-row">
-                                                        <div class="ant-col ant-form-item-label">
-                                                            <label class="" title="Email">Email</label>
-                                                        </div>
-                                                        
-                                                        <div class="ant-col ant-form-item-control">
-                                                            <div class="ant-form-item-control-input">
-                                                                <div class="ant-form-item-control-input-content">
-                                                                    <input placeholder="Email" disabled="" class="ant-input ant-input-disabled TextInput_input__F_9FC" type="text" value=""/></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                        <div class="ant-form-item col-span-6 mb-0">
-                                                            <div class="ant-row ant-form-item-row">
-                                                                <div class="ant-col ant-form-item-label">
-                                                                    <label class="" title="Identity Number">Identity Number</label>
-                                                                </div>
-                                                                    <div class="ant-col ant-form-item-control">
-                                                                        <div class="ant-form-item-control-input">
-                                                                            <div class="ant-form-item-control-input-content">
-                                                                                <input placeholder="Identity Number" disabled="" class="ant-input ant-input-disabled TextInput_input__F_9FC" type="text" value=""/></div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="ant-form-item col-span-6 mb-0">
-                                                                    <div class="ant-row ant-form-item-row">
-                                                                        <div class="ant-col ant-form-item-label">
-                                                                            <label class="" title="Phone">Phone</label>
-                                                                        </div>
-                                                                        <div class="ant-col ant-form-item-control">
-                                                                            <div class="ant-form-item-control-input">
-                                                                                <div class="ant-form-item-control-input-content">
-                                                                                    <div class="PhoneInput_wrapper__3YVfx">
-                                                                                        <div class=" react-tel-input ">
-                                                                                            <input class="form-control " placeholder="1 (702) 123-4567" type="tel" value="+60"/>
-                                                                                                <div class="flag-dropdown ">
-                                                                                                    <div class="selected-flag" title="Malaysia: + 60" tabindex="0" role="button" aria-haspopup="listbox">
-                                                                                                        <div class="flag my">
-                                                                                                            <div class="arrow"></div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                        <div class="ant-form-item col-span-6 mb-0">
-                                                                            <div class="ant-row ant-form-item-row">
-                                                                                <div class="ant-col ant-form-item-label">
-                                                                                    <label class="" title="Gender">Gender</label>
-                                                                                </div>
-                                                                                    <div class="ant-col ant-form-item-control">
-                                                                                        <div class="ant-form-item-control-input">
-                                                                                            <div class="ant-form-item-control-input-content">
-                                                                                                <style data-emotion="css b62m3t-container">.css-b62m3t-container{position:relative;box-sizing:border-box;}</style>
-                                                                                                    <div class="SelectInput_wrapper__vKLEr css-b62m3t-container">
-                                                                                                        <style data-emotion="css 7pg0cj-a11yText">.css-7pg0cj-a11yText{z-index:9999;border:0;clip:rect(1px, 1px, 1px, 1px);height:1px;width:1px;position:absolute;overflow:hidden;padding:0;white-space:nowrap;}</style>
-                                                                                                            <span id="react-select-gender-live-region" class="css-7pg0cj-a11yText"></span>
-                                                                                                                <span aria-live="polite" aria-atomic="false" aria-relevant="additions text" class="css-7pg0cj-a11yText"></span>
-                                                                                                                    <style data-emotion="css 13cymwt-control">.css-13cymwt-control{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;cursor:default;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;min-height:38px;outline:0!important;position:relative;-webkit-transition:all 100ms;transition:all 100ms;background-color:hsl(0, 0%, 100%);border-color:hsl(0, 0%, 80%);border-radius:4px;border-style:solid;border-width:1px;box-sizing:border-box;}.css-13cymwt-control:hover{border-color:hsl(0, 0%, 70%);}</style>
-                                                                                                                        <div class="select__control css-13cymwt-control">
-                                                                                                                            <style data-emotion="css hlgwow">.css-hlgwow{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:grid;-webkit-flex:1;-ms-flex:1;flex:1;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-overflow-scrolling:touch;position:relative;overflow:hidden;padding:2px 8px;box-sizing:border-box;}</style>
-                                                                                                                                <div class="select__value-container css-hlgwow">
-                                                                                                                                    <style data-emotion="css 1jqq78o-placeholder">.css-1jqq78o-placeholder{grid-area:1/1/2/3;color:hsl(0, 0%, 50%);margin-left:2px;margin-right:2px;box-sizing:border-box;}</style>
-                                                                                                                                        <div class="select__placeholder css-1jqq78o-placeholder" id="react-select-gender-placeholder">Select gender</div>
-                                                                                                                                            <style data-emotion="css 19bb58m">.css-19bb58m{visibility:visible;-webkit-flex:1 1 auto;-ms-flex:1 1 auto;flex:1 1 auto;display:inline-grid;grid-area:1/1/2/3;grid-template-columns:0 min-content;margin:2px;padding-bottom:2px;padding-top:2px;color:hsl(0, 0%, 20%);box-sizing:border-box;}.css-19bb58m:after{content:attr(data-value) " ";visibility:hidden;white-space:pre;grid-area:1/2;font:inherit;min-width:2px;border:0;margin:0;outline:0;padding:0;}</style>
-                                                                                                                                                <div class="select__input-container css-19bb58m" data-value="">
-                                                                                                                                                    <input class="select__input" style="label:input;color:inherit;background:0;opacity:1;width:100%;grid-area:1 / 2;font:inherit;min-width:2px;border:0;margin:0;outline:0;padding:0 }" autoCapitalize="none" autoComplete="off" autoCorrect="off" id="react-select-gender-input" spellcheck="false" tabindex="0" type="text" aria-autocomplete="list" aria-expanded="false" aria-haspopup="true" role="combobox" aria-describedby="react-select-gender-placeholder" value=""/></div>
-                                                                                                                                                </div>
-                                                                                                                                                <style data-emotion="css 1wy0on6">.css-1wy0on6{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-align-self:stretch;-ms-flex-item-align:stretch;align-self:stretch;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;box-sizing:border-box;}</style>
-                                                                                                                                                <div class="select__indicators css-1wy0on6">
-                                                                                                                                                    <style data-emotion="css 1u9des2-indicatorSeparator">.css-1u9des2-indicatorSeparator{-webkit-align-self:stretch;-ms-flex-item-align:stretch;align-self:stretch;width:1px;background-color:hsl(0, 0%, 80%);margin-bottom:8px;margin-top:8px;box-sizing:border-box;}</style>
-                                                                                                                                                        <span class="select__indicator-separator css-1u9des2-indicatorSeparator"></span>
-                                                                                                                                                            <style data-emotion="css 1xc3v61-indicatorContainer">.css-1xc3v61-indicatorContainer{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-transition:color 150ms;transition:color 150ms;color:hsl(0, 0%, 80%);padding:8px;box-sizing:border-box;}.css-1xc3v61-indicatorContainer:hover{color:hsl(0, 0%, 60%);}</style>
-                                                                                                                                                                <div class="select__indicator select__dropdown-indicator css-1xc3v61-indicatorContainer" aria-hidden="true">
-                                                                                                                                                                    <style data-emotion="css 8mmkcg">.css-8mmkcg{display:inline-block;fill:currentColor;line-height:1;stroke:currentColor;stroke-width:0;}</style>
-                                                                                                                                                                        <svg height="20" width="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false" class="css-8mmkcg">
-                                                                                                                                                                            <path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path>
-                                                                                                                                                                        </svg>
-                                                                                                                                                                    </div>
-                                                                                                                                                                </div>
-                                                                                                                                                            </div>
-                                                                                                                                                        </div>
-                                                                                                                                                    </div>
-                                                                                                                                                </div>
-                                                                                                                                            </div>
-                                                                                                                                        </div>
-                                                                                                                                    </div>
-                                                                                                                                    <div class="ant-form-item col-span-6 mb-0">
-                                                                                                                                        <div class="ant-row ant-form-item-row">
-                                                                                                                                            <div class="ant-col ant-form-item-label">
-                                                                                                                                                <label class="" title="Race">Race</label>
-                                                                                                                                            </div>
-                                                                                                                                            <div class="ant-col ant-form-item-control">
-                                                                                                                                                <div class="ant-form-item-control-input">
-                                                                                                                                                    <div class="ant-form-item-control-input-content">
-                                                                                                                                                        <input placeholder="Race" class="ant-input TextInput_input__F_9FC" type="text" value=""/></div>
-                                                                                                                                                    </div>
-                                                                                                                                                </div>
-                                                                                                                                            </div>
-                                                                                                                                        </div>
-                                                                                                                                            <div class="ant-form-item col-span-6 mb-0">
-                                                                                                                                                                                                                                                    <div class="ant-row ant-form-item-row">
-                                                                                                                                                                                                                                                        <div class="ant-col ant-form-item-label">
-                                                                                                                                                                                                                                                            <label class="" title="Country">Country</label></div>
-                                                                                                                                                                                                                                                            <div class="ant-col ant-form-item-control">
-                                                                                                                                                                                                                                                                <div class="ant-form-item-control-input">
-                                                                                                                                                                                                                                                                    <div class="ant-form-item-control-input-content">
-                                                                                                                                                                                                                                                                        <style data-emotion="css b62m3t-container">.css-b62m3t-container{position:relative;box-sizing:border-box;}</style>
-                                                                                                                                                                                                                                                                        <div class="SelectInput_wrapper__vKLEr css-b62m3t-container">
-                                                                                                                                                                                                                                                                            <style data-emotion="css 7pg0cj-a11yText">.css-7pg0cj-a11yText{z-index:9999;border:0;clip:rect(1px, 1px, 1px, 1px);height:1px;width:1px;position:absolute;overflow:hidden;padding:0;white-space:nowrap;}</style>
-                                                                                                                                                                                                                                                                            <span id="react-select-2-live-region" class="css-7pg0cj-a11yText"></span>
-                                                                                                                                                                                                                                                                            <span aria-live="polite" aria-atomic="false" aria-relevant="additions text" class="css-7pg0cj-a11yText"></span>
-                                                                                                                                                                                                                                                                            <style data-emotion="css 13cymwt-control">.css-13cymwt-control{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;cursor:default;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;min-height:38px;outline:0!important;position:relative;-webkit-transition:all 100ms;transition:all 100ms;background-color:hsl(0, 0%, 100%);border-color:hsl(0, 0%, 80%);border-radius:4px;border-style:solid;border-width:1px;box-sizing:border-box;}.css-13cymwt-control:hover{border-color:hsl(0, 0%, 70%);}</style>
-                                                                                                                                                                                                                                                                            <div class="select__control css-13cymwt-control">
-                                                                                                                                                                                                                                                                                <style data-emotion="css hlgwow">.css-hlgwow{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:grid;-webkit-flex:1;-ms-flex:1;flex:1;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-overflow-scrolling:touch;position:relative;overflow:hidden;padding:2px 8px;box-sizing:border-box;}</style>
-                                                                                                                                                                                                                                                                                <div class="select__value-container css-hlgwow">
-                                                                                                                                                                                                                                                                                    <style data-emotion="css 1jqq78o-placeholder">.css-1jqq78o-placeholder{grid-area:1/1/2/3;color:hsl(0, 0%, 50%);margin-left:2px;margin-right:2px;box-sizing:border-box;}</style>
-                                                                                                                                                                                                                                                                                    <div class="select__placeholder css-1jqq78o-placeholder" id="react-select-2-placeholder">Select country</div>
-                                                                                                                                                                                                                                                                                    <style data-emotion="css 19bb58m">.css-19bb58m{visibility:visible;-webkit-flex:1 1 auto;-ms-flex:1 1 auto;flex:1 1 auto;display:inline-grid;grid-area:1/1/2/3;grid-template-columns:0 min-content;margin:2px;padding-bottom:2px;padding-top:2px;color:hsl(0, 0%, 20%);box-sizing:border-box;}.css-19bb58m:after{content:attr(data-value) " ";visibility:hidden;white-space:pre;grid-area:1/2;font:inherit;min-width:2px;border:0;margin:0;outline:0;padding:0;}</style>
-                                                                                                                                                                                                                                                                                    <div class="select__input-container css-19bb58m" data-value="">
-                                                                                                                                                                                                                                                                                        <input class="select__input" style="label:input;color:inherit;background:0;opacity:1;width:100%;grid-area:1 / 2;font:inherit;min-width:2px;border:0;margin:0;outline:0;padding:0" autoCapitalize="none" autoComplete="off" autoCorrect="off" id="react-select-2-input" spellcheck="false" tabindex="0" type="text" aria-autocomplete="list" aria-expanded="false" aria-haspopup="true" role="combobox" aria-describedby="react-select-2-placeholder" value=""/></div></div>
-                                                                                                                                                                                                                                                                                        <style data-emotion="css 1wy0on6">.css-1wy0on6{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-align-self:stretch;-ms-flex-item-align:stretch;align-self:stretch;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;box-sizing:border-box;}</style>
-                                                                                                                                                                                                                                                                                        <div class="select__indicators css-1wy0on6">
-                                                                                                                                                                                                                                                                                            <style data-emotion="css 1u9des2-indicatorSeparator">.css-1u9des2-indicatorSeparator{-webkit-align-self:stretch;-ms-flex-item-align:stretch;align-self:stretch;width:1px;background-color:hsl(0, 0%, 80%);margin-bottom:8px;margin-top:8px;box-sizing:border-box;}</style>
-                                                                                                                                                                                                                                                                                            <span class="select__indicator-separator css-1u9des2-indicatorSeparator"></span>
-                                                                                                                                                                                                                                                                                            <style data-emotion="css 1xc3v61-indicatorContainer">.css-1xc3v61-indicatorContainer{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-transition:color 150ms;transition:color 150ms;color:hsl(0, 0%, 80%);padding:8px;box-sizing:border-box;}.css-1xc3v61-indicatorContainer:hover{color:hsl(0, 0%, 60%);}</style>
-                                                                                                                                                                                                                                                                                            <div class="select__indicator select__dropdown-indicator css-1xc3v61-indicatorContainer" aria-hidden="true">
-                                                                                                                                                                                                                                                                                                <style data-emotion="css 8mmkcg">.css-8mmkcg{display:inline-block;fill:currentColor;line-height:1;stroke:currentColor;stroke-width:0;}</style>
-                                                                                                                                                                                                                                                                                                <svg height="20" width="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false" class="css-8mmkcg"><path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path></svg></div></div></div></div></div></div></div></div></div></div>
-                                                                                                                                                                                                                                                                                                <button type="submit" class="SubmitButton_wrapper__JUW5x">
-                                                                                                                                                                                                                                                                                                    <span>Submit</span></button></form></section><section>
-                                                                                                                                                                                                                                                                                                        <div class="mb-3 text-lg text-theme-dark font-bold">Change Password</div>
-                                                                                                                                                                                                                                                                                                        <form class="ant-form ant-form-vertical w-full md:w-2/4">
-                                                                                                                                                                                                                                                                                                            <div class="ant-form-item mb-4">
-                                                                                                                                                                                                                                                                                                                <div class="ant-row ant-form-item-row">
-                                                                                                                                                                                                                                                                                                                    <div class="ant-col ant-form-item-label">
-                                                                                                                                                                                                                                                                                                                        <label class="" title="Current Password">Current Password</label></div>
-                                                                                                                                                                                                                                                                                                                        <div class="ant-col ant-form-item-control">
-                                                                                                                                                                                                                                                                                                                            <div class="ant-form-item-control-input">
-                                                                                                                                                                                                                                                                                                                                <div class="ant-form-item-control-input-content">
-                                                                                                                                                                                                                                                                                                                                    <input type="password" placeholder="Current Password" class="ant-input TextInput_input__F_9FC" value=""/></div></div></div></div></div>
-                                                                                                                                                                                                                                                                                                                                    <div class="ant-form-item mb-4">
-                                                                                                                                                                                                                                                                                                                                        <div class="ant-row ant-form-item-row">
-                                                                                                                                                                                                                                                                                                                                            <div class="ant-col ant-form-item-label">
-                                                                                                                                                                                                                                                                                                                                                <label class="" title="New Password">New Password</label></div>
-                                                                                                                                                                                                                                                                                                                                                <div class="ant-col ant-form-item-control">
-                                                                                                                                                                                                                                                                                                                                                    <div class="ant-form-item-control-input">
-                                                                                                                                                                                                                                                                                                                                                        <div class="ant-form-item-control-input-content">
-                                                                                                                                                                                                                                                                                                                                                            <input type="password" placeholder="New Password" class="ant-input TextInput_input__F_9FC" value=""/></div></div></div></div></div>
-                                                                                                                                                                                                                                                                                                                                                            <div class="ant-form-item mb-4">
-                                                                                                                                                                                                                                                                                                                                                                <div class="ant-row ant-form-item-row">
-                                                                                                                                                                                                                                                                                                                                                                    <div class="ant-col ant-form-item-label">
-                                                                                                                                                                                                                                                                                                                                                                        <label class="" title="New Password Confirmation">New Password Confirmation</label></div>
-                                                                                                                                                                                                                                                                                                                                                                        <div class="ant-col ant-form-item-control">
-                                                                                                                                                                                                                                                                                                                                                                            <div class="ant-form-item-control-input">
-                                                                                                                                                                                                                                                                                                                                                                                <div class="ant-form-item-control-input-content">
-                                                                                                                                                                                                                                                                                                                                                                                    <input type="password" placeholder="New Password Confirmation" class="ant-input TextInput_input__F_9FC" value=""/></div></div></div></div></div>
-                                                                                                                                                                                                                                                                                                                                                                                    <button type="submit" class="SubmitButton_wrapper__JUW5x">
-                                                                                                                                                                                                                                                                                                                                                                                        <span>Submit</span></button></form></section></div></div></div></div></div></div></div></div></div>
-        
         </main>
 
     </div>
-
     <script src="owner-agent.js"></script>
-</body>
 
+<script>
+    document.getElementById('general-cancel-button').addEventListener('click', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const userType = urlParams.get('userType');
+    
+      if (userType === 'tenant') {
+        window.location.href = '/tenant-dashboard.html';
+      } 
+      else if (userType === 'Owner/Agent') {
+        window.location.href = '/owner-agent.html';
+      }
+     
+    });
+    </script>
+    <script>
+        document.getElementById('change-password-cancel-button').addEventListener('click', function() {
+          const urlParams = new URLSearchParams(window.location.search);
+          const userType = urlParams.get('userType');
+        
+          if (userType === 'tenant') {
+            window.location.href = '/tenant-dashboard.html';
+          } 
+          else if (userType === 'Owner/Agent') {
+            window.location.href = '/owner-agent.html';
+          }
+         
+        });
+        </script>
+        <script>
+            document.getElementById('info-cancel-button').addEventListener('click', function() {
+              const urlParams = new URLSearchParams(window.location.search);
+              const userType = urlParams.get('userType');
+            
+              if (userType === 'tenant') {
+                window.location.href = '/tenant-dashboard.html';
+              } 
+              else if (userType === 'Owner/Agent') {
+                window.location.href = '/owner-agent.html';
+              }
+             
+            });
+            </script>
+</body>
 </html>
