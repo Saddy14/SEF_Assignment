@@ -128,6 +128,25 @@ app.post('/update-profile', (req, res) => {
     .catch(error => console.error(`Error updating user: ${error}`));
 });
 
+app.post('/change-password', (req, res) => {
+  const { id, currentPassword, newPassword } = req.body;
+
+  UserModel.findById(id)
+    .then(user => {
+      if (!user) {
+        res.status(404).json({ message: 'User not found' });
+        throw new Error('User not found'); // Stop execution if user is not found
+      } else if (user.password !== currentPassword) {
+        res.status(401).json({ message: 'Current password is incorrect' });
+        throw new Error('Current password is incorrect'); // Stop execution if password is incorrect
+      } else {
+        return UserModel.findByIdAndUpdate(id, { password: newPassword }, { new: true });
+      }
+    })
+    .then(() => res.json({ message: 'Password changed successfully' }))
+    .catch(error => console.error(`Error changing password: ${error}`));
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

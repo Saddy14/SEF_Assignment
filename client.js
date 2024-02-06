@@ -27,7 +27,7 @@ function saveChangesGeneral() {
     .then(response => response.json())
     .then(data => {
         console.log('Success:', data);
-        window.alert('You will be logged out to save the changes.');
+        window.alert('You will be logged out to save the new changes.');
         window.location.href = '/logout';
     })
     .catch((error) => {
@@ -35,3 +35,32 @@ function saveChangesGeneral() {
     });
     
 }
+
+
+document.getElementById('change-password-save-changes-button').addEventListener('click', () => {
+    const currentPassword = document.getElementById('current-password').value;
+    const newPassword = document.getElementById('new-password').value;
+    const repeatNewPassword = document.getElementById('repeat-new-password').value;
+  
+    if (newPassword !== repeatNewPassword) {
+      alert('New passwords do not match.');
+      return;
+    }
+  
+    // Get the userID from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('userID');
+  
+    fetch('/change-password', {
+      method: 'POST',
+      body: JSON.stringify({ id, currentPassword, newPassword }),
+      headers: { 'Content-Type': 'application/json' },
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+      window.alert('Password changed successfully. You will be logged out.');
+      window.location.href = '/logout';
+    })
+    .catch(error => console.error('Error:', error));
+  });
