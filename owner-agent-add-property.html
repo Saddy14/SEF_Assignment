@@ -124,7 +124,7 @@
             </div>
 
             <div class="text-right mt-3">
-                <button id="save-changes-button" type="button" class="btn btn-primary">Add Property To System</button>&nbsp;
+                <button id="add-property-button" type="button" class="btn btn-primary">Add Property To System</button>&nbsp;
                 <a id="go-back" href="#" type="button" class="btn btn-default">Go Back</a>
             </div>
             
@@ -174,5 +174,46 @@
             .catch(error => console.error(error));
     };
 </script>
+<script>
+    document.getElementById('add-property-button').addEventListener('click', function() {
+        // Get the form data
+        const name = document.getElementById('name').value;
+        const location = document.getElementById('location').value;
+        const price = document.getElementById('price').value;
+        const description = document.getElementById('description').value;
+        const bedroom = document.getElementById('bedroom').value;
+        const bathroom = document.getElementById('bathroom').value;
+    
+        // Get the userId from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const userId = urlParams.get('userId');
+    
+        // Create the property object
+        const property = { name, location, price, description, bedroom, bathroom, userId };
+    
+        // Send the property object to the server
+        fetch('/add-property', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(property),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            window.alert('Your Property is Successfully Added in the System.');
+            fetch('/current-user')
+                .then(response => response.json())
+                .then(user => {
+                    window.location.href = `/owner-agent-my-property.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+                })
+                .catch(error => console.error(error));
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    });
+    </script>
 
 </html>

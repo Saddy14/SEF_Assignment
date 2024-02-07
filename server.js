@@ -30,6 +30,9 @@ app.get('/', (req, res) => {
 // Create a model for the 'user' collection
 const UserModel = mongoose.model('user', mySchema);
 
+// Create a model for the 'property' collection
+const PropertyModel = mongoose.model('property', mySchema);
+
 app.get('/users', (req, res) => {
   UserModel.find()
   .then(results => {
@@ -145,6 +148,18 @@ app.post('/change-password', (req, res) => {
     })
     .then(() => res.json({ message: 'Password changed successfully' }))
     .catch(error => console.error(`Error changing password: ${error}`));
+});
+
+// Add a new route to handle the POST request
+app.post('/add-property', (req, res) => {
+  const property = new PropertyModel(req.body);
+  property.save()
+    .then(() => {
+      res.json({ message: 'Property added successfully' });
+    })
+    .catch(err => {
+      res.status(500).json({ error: err });
+    });
 });
 
 app.listen(port, () => {
