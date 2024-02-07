@@ -583,6 +583,7 @@ body{
     grid-template-columns: repeat(auto-fit, minmax(300px, auto));
     gap: 3rem;
     padding: 0 50px;
+    color: black;
 }
 
 .properties-container .box {
