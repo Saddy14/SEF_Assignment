@@ -183,13 +183,16 @@
         const description = document.getElementById('description').value;
         const bedroom = document.getElementById('bedroom').value;
         const bathroom = document.getElementById('bathroom').value;
-    
+
+        // Get the username from the URL
+        const urlParam = new URLSearchParams(window.location.search);
+        const ownerName = urlParam.get('username');
         // Get the userId from the URL
         const urlParams = new URLSearchParams(window.location.search);
         const userId = urlParams.get('userId');
     
         // Create the property object
-        const property = { name, location, price, description, bedroom, bathroom, userId };
+        const property = { name, location, price, description, bedroom, bathroom, ownerName, userId };
     
         // Send the property object to the server
         fetch('/add-property', {

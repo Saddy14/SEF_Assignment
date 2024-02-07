@@ -162,6 +162,28 @@ app.post('/add-property', (req, res) => {
     });
 });
 
+app.get('/properties', async (req, res) => {
+  try {
+      const userId = req.query.userId;
+      const properties = await PropertyModel.find({ userId: userId });
+      res.json(properties);
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server error' });
+  }
+});
+
+app.delete('/properties/:id', async function(req, res) {
+  const id = req.params.id;
+
+  try {
+      await PropertyModel.deleteOne({ _id: id });
+      res.status(200).send({ message: 'Property was deleted successfully' });
+  } catch (err) {
+      res.status(500).send({ error: 'There was an error deleting the property' });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
