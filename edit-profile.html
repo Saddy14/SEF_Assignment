@@ -48,15 +48,18 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">E-mail</label>
-                                    <input id="email" type="text" class="form-control mb-1" placeholder="yourmail@gmail.com">
+                                    <input id="email" type="text" class="form-control mb-1"
+                                        placeholder="yourmail@gmail.com">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Phone</label>
                                     <input id="phone" type="text" class="form-control" placeholder="+60 (12) 345 6789">
                                 </div>
                                 <div class="text-right mt-3">
-                                    <button  id="general-save-changes-button" type="button" class="btn btn-primary">Save changes</button>&nbsp;
-                                    <button id="general-cancel-button" type="button" class="btn btn-default">Cancel</button>
+                                    <button id="general-save-changes-button" type="button" class="btn btn-primary">Save
+                                        changes</button>&nbsp;
+                                    <button id="general-cancel-button" type="button"
+                                        class="btn btn-default">Cancel</button>
                                 </div>
                             </div>
                         </div>
@@ -64,19 +67,24 @@
                             <div class="card-body pb-2">
                                 <div class="form-group">
                                     <label class="form-label">Current Password</label>
-                                    <input type="password" class="form-control" id="current-password" placeholder="current Password">
+                                    <input type="password" class="form-control" id="current-password"
+                                        placeholder="current Password">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">New Password</label>
-                                    <input type="password" class="form-control" id="new-password" placeholder="At least 8 characters">
+                                    <input type="password" class="form-control" id="new-password"
+                                        placeholder="At least 8 characters">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Repeat New Password</label>
-                                    <input type="password" class="form-control" id="repeat-new-password" placeholder="At least 8 characters">
+                                    <input type="password" class="form-control" id="repeat-new-password"
+                                        placeholder="At least 8 characters">
                                 </div>
                                 <div class="text-right mt-3">
-                                    <button  id="change-password-save-changes-button" type="button" class="btn btn-primary">Save changes</button>&nbsp;
-                                    <button id="change-password-cancel-button" type="button" class="btn btn-default">Cancel</button>
+                                    <button id="change-password-save-changes-button" type="button"
+                                        class="btn btn-primary">Save changes</button>&nbsp;
+                                    <button id="change-password-cancel-button" type="button"
+                                        class="btn btn-default">Cancel</button>
                                 </div>
                             </div>
                         </div>
@@ -117,8 +125,10 @@
                                     </select>
                                 </div>
                                 <div class="text-right mt-3">
-                                    <button id="save-changes-button" type="button" class="btn btn-primary">Save changes</button>&nbsp;
-                                    <button id="info-cancel-button" type="button" class="btn btn-default">Cancel</button>
+                                    <button id="save-changes-button" type="button" class="btn btn-primary">Save
+                                        changes</button>&nbsp;
+                                    <button id="info-cancel-button" type="button"
+                                        class="btn btn-default">Cancel</button>
                                 </div>
                             </div>
                         </div>
@@ -136,46 +146,56 @@
     <script type="text/javascript"></script>
     <script src="client.js"></script>
 </body>
-    <script>
-        document.getElementById('general-cancel-button').addEventListener('click', function() {
-          const urlParams = new URLSearchParams(window.location.search);
-          const userType = urlParams.get('userType');
-        
-          if (userType === 'tenant') {
-            window.location.href = '/tenant-dashboard.html';
-          } 
-          else if (userType === 'Owner/Agent') {
-            window.location.href = '/owner-agent.html';
-          }
-         
-        });
-        </script>
-        <script>
-            document.getElementById('change-password-cancel-button').addEventListener('click', function() {
-              const urlParams = new URLSearchParams(window.location.search);
-              const userType = urlParams.get('userType');
-            
-              if (userType === 'tenant') {
-                window.location.href = '/tenant-dashboard.html';
-              } 
-              else if (userType === 'Owner/Agent') {
-                window.location.href = '/owner-agent.html';
-              }
-             
-            });
-            </script>
-            <script>
-                document.getElementById('info-cancel-button').addEventListener('click', function() {
-                  const urlParams = new URLSearchParams(window.location.search);
-                  const userType = urlParams.get('userType');
-                
-                  if (userType === 'tenant') {
-                    window.location.href = '/tenant-dashboard.html';
-                  } 
-                  else if (userType === 'Owner/Agent') {
-                    window.location.href = '/owner-agent.html';
-                  }
-                 
+<script>
+        fetch('/current-user')
+            .then(response => response.json())
+            .then(user => {
+                document.getElementById('general-cancel-button').addEventListener('click', function () {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const userType = urlParams.get('userType');
+
+                    if (userType === 'tenant') {
+                        window.location.href = `/tenant-dashboard.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+                    } else if (userType === 'Owner/Agent') {
+                        window.location.href = `/owner-agent-dashboard.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+                    }
                 });
-                </script>
+            })
+            .catch(error => console.error(error));
+</script>
+<script>
+        fetch('/current-user')
+            .then(response => response.json())
+            .then(user => {
+                document.getElementById('change-password-cancel-button').addEventListener('click', function () {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const userType = urlParams.get('userType');
+
+                    if (userType === 'tenant') {
+                        window.location.href = `/tenant-dashboard.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+                    } else if (userType === 'Owner/Agent') {
+                        window.location.href = `/owner-agent-dashboard.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+                    }
+                });
+            })
+            .catch(error => console.error(error));
+</script>
+<script>
+        fetch('/current-user')
+            .then(response => response.json())
+            .then(user => {
+                document.getElementById('info-cancel-button').addEventListener('click', function () {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const userType = urlParams.get('userType');
+
+                    if (userType === 'tenant') {
+                        window.location.href = `/tenant-dashboard.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+                    } else if (userType === 'Owner/Agent') {
+                        window.location.href = `/owner-agent-dashboard.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+                    }
+                });
+            })
+            .catch(error => console.error(error));
+</script>
+
 </html>

@@ -18,13 +18,13 @@
     <header>
         <div class="nav container">
             <!-- Logo -->
-            <a href="owner-agent.html" class="logo"><i class='bx bx-home-alt-2'></i>HomeWoW</a>
+            <a id="navbarhome" href="#" class="logo"><i class='bx bx-home-alt-2'></i>HomeWoW</a>
             <!-- Menu Icon -->
             <input type="checkbox" name="" id="menu">
             <label for="menu"><i class='bx bx-menu' id="menu-icon"></i></label>
             <!-- Navigation Links -->
             <ul class="navbar">
-                <li><a href="owner-agent.html">Home</a></li>
+                <li><a id="navbarhome1" href="#">Home</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#how">How It Works</a></li>
                 <li><a href="#properties">Properties</a></li>
@@ -33,20 +33,20 @@
             <div class="user-profile">
                 <div class="profile-info">
                     <div id="profile-picture" class="avatar"></div>
-                    <span id="account-name">Owner / Agent</span>
+                    <span id="account-name">Loading...</span>
                 </div>
                 <div class="dropdown">
                     <button id="dropdown-button" onclick="toggleDropdown()">
                         <i class='bx bx-chevron-down'></i>
                     </button>
                     <div id="dropdown-menu">
-                        <a href="owner-agent-dashboard.html">Dashboard</a>
+                        <a id="dashboard-link" href="#">Dashboard</a>
                         <a href="owner-agent-my-property.html">My Property</a>
                         <a href="owner-agent-tenancy-agreement-request.html">Tenancy Agreement Request</a>
                         <a href="owner-agent-payment-log.html">Payment Log</a>
                         <a href="owner-agent-appointment.html">Appointment</a>
-                        <a href="owner-agent-my-profile.html">My Profile</a>
-                        <a href="logout.html">Logout</a>
+                        <a id="edit-profile-link" href="#">My Profile</a>
+                        <a href="/logout">Logout</a>
 
                     </div>
                 </div>
@@ -281,5 +281,24 @@
         <p>&#169; HomeWoW All Right Reserved</p>
     </div>
 </body>
+<script>
+    window.onload = function () {
+        fetch('/current-user')
+            .then(response => response.json())
+            .then(user => {
+                document.getElementById('account-name').textContent = user.name;
+
+                // Update the href of the anchor dashboard link
+                document.getElementById('dashboard-link').href = `/owner-agent-dashboard.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+
+                // Update the href of the edit profile link
+                document.getElementById('edit-profile-link').href = `/edit-profile.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+
+                document.getElementById('navbarhome').href = `/owner-agent.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+                document.getElementById('navbarhome1').href = `/owner-agent.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+            })
+            .catch(error => console.error(error));
+    };
+</script>
 
 </html>
