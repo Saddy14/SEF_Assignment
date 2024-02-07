@@ -40,10 +40,10 @@
                     <div id="dropdown-menu">
                         <!-- <a href="tenant-dashboard.html?username=<username>&userType=<userType>">Dashboard</a> -->
                         <a id="dashboard-link" href="#">Dashboard</a>
-                        <a id="edit-profile-link" href="#">Profile</a> 
                         <a href="">Tenancies</a>
                         <a href="">Unsettled Invoices</a>
                         <a href="">Booking Requests</a>
+                        <a id="edit-profile-link" href="#">Profile</a>
                         <a href="/logout">Logout</a>
                     </div>
                 </div>
@@ -277,20 +277,21 @@
         <p>&#169; HomeWoW All Right Reserved</p>
     </div>
 </body>
-        <script>
-            window.onload = function () {
-                fetch('/current-user')
-                    .then(response => response.json())
-                    .then(user => {
-                        document.getElementById('account-name').textContent = user.name;
+<script>
+    window.onload = function () {
+        fetch('/current-user')
+            .then(response => response.json())
+            .then(user => {
+                document.getElementById('account-name').textContent = user.name;
 
-                        // Update the href of the anchor dashboard link
-                        document.getElementById('dashboard-link').href = `/tenant-dashboard.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+                // Update the href of the anchor dashboard link
+                document.getElementById('dashboard-link').href = `/tenant-dashboard.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
 
-                        // Update the href of the edit profile link
-                        document.getElementById('edit-profile-link').href = `/edit-profile.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
-                    })
-                    .catch(error => console.error(error));
-            };
-        </script>
+                // Update the href of the edit profile link
+                document.getElementById('edit-profile-link').href = `/edit-profile.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+            })
+            .catch(error => console.error(error));
+    };
+</script>
+
 </html>
