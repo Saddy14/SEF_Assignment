@@ -20,18 +20,15 @@
         </a>
         <ul class="side-menu">
             <li><a href="owner-agent-dashboard.html"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
-            <li><a href="owner-agent-my-profile.html"><i class='bx bx bx-user'></i>My Profile</a></li>
-            <li><a href="owner-agent-my-property.html"><i class='bx bx bx-home'></i>My Property</a></li>
+            <li class="active"><a href="owner-agent-my-property.html"><i class='bx bx bx-home'></i>My Property</a></li>
             <li><a href="owner-agent-tenancy-agreement-request.html"><i class='bx bx-message-square-dots'></i>Tenancy Agreement<br>Request</a></li>
             <li><a href="owner-agent-payment-log.html"><i class='bx bx bx-detail'></i>Payment Log</a></li>
             <li><a href="owner-agent-appointment.html"><i class='bx bx bx-calendar'></i>Appointment</a></li>
-            <!--<li class="active"><a href="#"><i class='bx bx-analyse'></i>Analytics</a></li> -->
         </ul>
         <ul class="side-menu">
-            <ul class="side-menu">
-                <li><a href="owner-agent-contact-us.html" class="contact-us"><i class='bx bx bx-phone'></i>Contact Us</a></li>
-                <li><a href="logout.html" class="logout"><i class='bx bx-log-out-circle'></i>Logout</a></li>
-            </ul>
+            <li><a href="edit-profile.html" class="edit-profile"><i class='bx bx bx-user'></i>Edit Profile</a></li>
+            <li><a href="owner-agent-contact-us.html" class="contact-us"><i class='bx bx bx-phone'></i>Contact Us</a></li>
+            <li><a href="logout.html" class="logout"><i class='bx bx-log-out-circle'></i>Logout</a></li>
         </ul>
     </div>
     <!-- End of Sidebar -->
@@ -66,10 +63,11 @@
                     <h1>My Property</h1>
                 </div>
             </div>
-            
+            <div class="bottom-data">
+            <div class="orders">
             <section class="properties container" id="properties">
                 <div class="properties-container container">
-                    <button class="add-property" type="submit">Add Property</button>
+                    <a href="owner-agent-add-property.html" class="add-property">Add Property</a>
                     <!-- Box 1 -->
                     <div class="box">
                         <img src="img/house/house1.jpg" alt="">

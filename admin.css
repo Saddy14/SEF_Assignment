@@ -154,7 +154,7 @@ body {
 }
 
 .sidebar .side-menu li.active a {
-    color: var(--success);
+    color: var(--main-color);
 }
 
 .sidebar.close .side-menu li a {
@@ -593,14 +593,12 @@ body {
 
 /* Properties */
 .properties {
-    background: #fbfbfb;
     border-radius: 2rem;
-
 }
 
 .properties-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, auto));
+    grid-template-columns: repeat(auto-fit, minmax(300px, auto));
     gap: 3rem;
     padding: 0 50px;
 }
