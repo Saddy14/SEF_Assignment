@@ -19,15 +19,14 @@
             <div class="logo-name"><span>Home</span>WoW</div>
         </a>
         <ul class="side-menu">
-            <li><a href="admin-dashboard.html"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
-            <li><a href="admin-property-management.html"><i class='bx bx bx-home'></i>Property Management</a></li>
-            <li><a href="admin-user-management.html"><i class='bx bx-group'></i>User Management</a></li>
-            <li class="active"><a href="admin-payment-log.html"><i class='bx bx bx-detail'></i>Payment Log</a></li>
-            <!-- <li class="active"><a href="#"><i class='bx bx-analyse'></i>Analytics</a></li> -->
+            <li><a id="sidebar-dashboard" href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li><a id="admin-property-management" href="#"><i class='bx bx bx-home'></i>Property Management</a></li>
+            <li><a id="admin-user-management" href="#"><i class='bx bx-group'></i>User Management</a></li>
+            <li class="active"><a id="admin-payment-log" href="#"><i class='bx bx bx-detail'></i>Payment Log</a></li>
         </ul>
         <ul class="side-menu">
             <li>
-                <a href="logout.html" class="logout">
+                <a href="/logout" class="logout">
                     <i class='bx bx-log-out-circle'></i>
                     Logout
                 </a>
@@ -53,9 +52,9 @@
                 <i class='bx bx-bell'></i>
                 <span class="count">0</span>
             </a>
-            <a class="profile">
+            <!-- <a class="profile">
                 <i class='bx bx-home-alt-2'></i>
-            </a>
+            </a> -->
         </nav>
 
         <!-- End of Navbar -->
@@ -112,5 +111,30 @@
 
     <script src="admin.js"></script>
 </body>
+<script>
+    window.onload = function () {
+        fetch('/current-user')
+            .then(response => response.json())
+            .then(user => {
+                // document.getElementById('account-name').textContent = user.name;
+
+                // // Update the href of the anchor dashboard link
+                document.getElementById('sidebar-dashboard').href = `/admin-dashboard.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+
+                // Update the href of the my property link
+                document.getElementById('admin-property-management').href = `/admin-property-management.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+
+                // Update the href of the user management link
+                document.getElementById('admin-user-management').href = `/admin-user-management.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+
+                // Update the href of the payment log link
+                document.getElementById('admin-payment-log').href = `/admin-payment-log.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+
+                // Update the href of the contact us link
+                // document.getElementById('contact-us').href = `/owner-agent-contact-us.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+            })
+            .catch(error => console.error(error));
+    };
+</script>
 
 </html>
