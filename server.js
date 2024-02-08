@@ -156,10 +156,25 @@ app.post('/add-property', (req, res) => {
     });
 });
 
+// app.get('/properties', async (req, res) => {
+//   try {
+//       const userId = req.query.userId;
+//       const properties = await PropertyModel.find({ userId: userId });
+//       res.json(properties);
+//   } catch (error) {
+//       console.error(error);
+//       res.status(500).json({ message: 'Server error' });
+//   }
+// });
 app.get('/properties', async (req, res) => {
   try {
       const userId = req.query.userId;
-      const properties = await PropertyModel.find({ userId: userId });
+      let properties;
+      if (userId) {
+          properties = await PropertyModel.find({ userId: userId });
+      } else {
+          properties = await PropertyModel.find();
+      }
       res.json(properties);
   } catch (error) {
       console.error(error);
