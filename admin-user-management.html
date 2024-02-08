@@ -86,7 +86,7 @@
                                 <td><p>John Doe</p></td>
                                 <td>012-234 7324</td>
                                 <td>johndoe@gmail.com</td>
-                                <td><span class="user-type owner-agent">Owner / Agent</span></td>
+                                <td><span class="user-type owner-agent">Owner/Agent</span></td>
                                 <td><button class="remove-user" type="submit">Remove</button></td>
                             </tr>
                             <tr>
@@ -95,7 +95,6 @@
                                 <td>ryan@gmail.com</td>
                                 <td><span class="user-type tenant">Tenant</span></td>
                                 <td><button class="remove-user" type="submit">Remove</button></td>
-                                <button class="remove" type="submit">Remove</button>
                             </tr>
                         </tbody>
                     </table>
@@ -130,7 +129,58 @@
                 // document.getElementById('contact-us').href = `/owner-agent-contact-us.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
             })
 
+        // Fetch all users
+        fetch('/users')
+            .then(response => response.json())
+            .then(users => {
+                const tbody = document.querySelector('.orders table tbody');
 
+                users.forEach(user => {
+            // Skip users with userType of 'Admin'
+            if (user.userType === 'Admin') {
+                return;
+            }
+
+            const userHtml = `
+                <tr>
+                    <td><p>${user.name}</p></td>
+                    <td>${user.phoneNumber}</td>
+                    <td>${user.email}</td>
+                    <td><span class="user-type ${user.userType}">${user.userType}</span></td>
+                    <td><button id="remove-${user._id}" class="remove-user" type="submit">Remove</button></td>
+                </tr>
+            `;
+            tbody.innerHTML += userHtml;
+        });
+
+                tbody.addEventListener('click', function (event) {
+                    if (event.target.classList.contains('remove-user')) {
+                        const id = event.target.id.split('-')[1];
+                        // Handle remove
+                        console.log(`Remove button clicked for user ${id}`);
+                        if (window.confirm('Are you sure you want to remove this user?')) {
+
+                            // Make a DELETE request to the server
+                            fetch(`/users/${id}`, {
+                                method: 'DELETE',
+                            })
+                                .then(response => {
+                                    if (!response.ok) {
+                                        throw new Error(`HTTP error! status: ${response.status}`);
+                                    }
+                                    return response.json();
+                                })
+                                .then(data => {
+                                    console.log('User was deleted successfully');
+                                    location.reload();
+                                })
+                                .catch(error => {
+                                    console.error('There was an error deleting the user', error);
+                                });
+                        }
+                    }
+                });
+            })
             .catch(error => console.error(error));
     };
 </script>
