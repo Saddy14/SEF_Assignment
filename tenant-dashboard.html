@@ -14,21 +14,21 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <a href="tenant.html" class="logo">
+        <a id="sidebar" href="#" class="logo">
             <i class='bx bx-code-alt'></i>
             <div class="logo-name"><span>Home</span>WoW</div>
         </a>
         <ul class="side-menu">
-            <li class="active"><a href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li class="active"><a id="sidebar-dashboard" href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
             <li><a href="#"><i class='bx bx-home'></i>Tenancies</a></li>
             <li><a href="#"><i class='bx bx-detail'></i>Payments</a></li>
             <li><a href="#"><i class='bx bx-coin-stack'></i>Invoices</a></li>
         </ul>
         <ul class="side-menu">
-            <li><a href="#" class="edit-profile"><i class='bx bx bx-user'></i>Edit Profile</a></li>
-            <li><a href="#" class="contact-us"><i class='bx bx bx-phone'></i>Contact Us</a>
+            <li><a id="edit-profile-link" href="#" class="edit-profile"><i class='bx bx bx-user'></i>Edit Profile</a></li>
+            <li><a id="contact-us" href="#" class="contact-us"><i class='bx bx bx-phone'></i>Contact Us</a>
             </li>
-            <li><a href="#" class="logout"><i class='bx bx-log-out-circle'></i>Logout</a></li>
+            <li><a href="/logout" class="logout"><i class='bx bx-log-out-circle'></i>Logout</a></li>
         </ul>
     </div>
     <!-- End of Sidebar -->
@@ -50,7 +50,7 @@
                 <i class='bx bx-bell'></i>
                 <span class="count">0</span>
             </a>
-            <a href="tenant.html" class="profile">
+            <a id="navbar" href="#" class="profile">
                 <i class='bx bx-home-alt-2'></i>
             </a>
         </nav>
@@ -183,5 +183,30 @@
 
     <script src="tenant.js"></script>
 </body>
+<script>
+    window.onload = function () {
+        fetch('/current-user')
+            .then(response => response.json())
+            .then(user => {
+                // document.getElementById('account-name').textContent = user.name;
+
+                // // Update the href of the anchor dashboard link
+                document.getElementById('sidebar-dashboard').href = `/tenant-dashboard.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+
+                // Update the href of the edit profile link
+                document.getElementById('edit-profile-link').href = `/edit-profile.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+
+                // Update the href of the sidebar home link
+                document.getElementById('sidebar').href = `/tenant.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+
+                // Update the href of the navbar home link
+                document.getElementById('navbar').href = `/tenant.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+
+                // Update the href of the contact us link
+                document.getElementById('contact-us').href = `/tenant-contact-us.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+            })
+            .catch(error => console.error(error));
+    };
+</script>
 
 </html>

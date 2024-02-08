@@ -1,7 +1,7 @@
 
-window.onload = function() {
+// window.onload = function() {
     document.getElementById('general-save-changes-button').addEventListener('click', saveChangesGeneral);
-}
+// }
 
 function saveChangesGeneral() {
     const name = document.getElementById('name').value;
@@ -9,11 +9,11 @@ function saveChangesGeneral() {
     const phone = document.getElementById('phone').value;
 
     const urlParams = new URLSearchParams(window.location.search);
-    const userID = urlParams.get('userID');
+    const userId = urlParams.get('userId');
 
     console.log("from client.js");
-    console.log(userID);
-    const data = { id: userID, name, email, phone };
+    console.log(userId);
+    const data = { id: userId, name, email, phone };
     console.log(data);
     console.log("saveChangesGeneral");
 
@@ -49,7 +49,7 @@ document.getElementById('change-password-save-changes-button').addEventListener(
   
     // Get the userID from the URL
     const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get('userID');
+    const id = urlParams.get('userId');
   
     fetch('/change-password', {
       method: 'POST',

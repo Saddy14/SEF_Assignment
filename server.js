@@ -70,7 +70,7 @@ app.post('/login', (req, res) => {
           res.redirect(`/owner-agent.html?username=${user.name}&userType=${user.userType}&id=${user._id}`);
         }
         else if (user.userType === 'Admin'){
-          res.redirect(`/admin-dashboard.html?userType=${user.userType}`);
+          res.redirect(`/admin-dashboard.html?username=${user.name}&userType${user.userType}&userId=${user.id}`);
         }
       }
     })
@@ -120,12 +120,6 @@ app.post('/update-profile', (req, res) => {
         } else {
             console.log(`Updated profile for user with id: ${id}`);
             res.json({ message: 'Profile updated successfully' });
-            // if (user.userType === 'tenant') {
-            //   res.redirect(`/tenant-dashboard.html`);
-            // }
-            // else if (user.userType === 'Owner/Agent') {
-            //   res.redirect(`/owner-agent.html`);
-            // }
         }
     })
     .catch(error => console.error(`Error updating user: ${error}`));

@@ -18,13 +18,13 @@
     <header>
         <div class="nav container">
             <!-- Logo -->
-            <a href="tenant.html" class="logo"><i class='bx bx-home-alt-2'></i>HomeWoW</a>
+            <a id="navbarhome" href="#" class="logo"><i class='bx bx-home-alt-2'></i>HomeWoW</a>
             <!-- Menu Icon -->
             <input type="checkbox" name="" id="menu">
             <label for="menu"><i class='bx bx-menu' id="menu-icon"></i></label>
             <!-- Navigation Links -->
             <ul class="navbar">
-                <li><a href="#home">Home</a></li>
+                <li><a id="navbarhome1" href="#">Home</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#how">How It Works</a></li>
                 <li><a href="#properties">Properties</a></li>
@@ -40,9 +40,9 @@
                     <div id="dropdown-menu">
                         <!-- <a href="tenant-dashboard.html?username=<username>&userType=<userType>">Dashboard</a> -->
                         <a id="dashboard-link" href="#">Dashboard</a>
-                        <a href="">Tenancies</a>
-                        <a href="">Payments</a>
-                        <a href="">Invoices</a>
+                        <a href="#">Tenancies</a>
+                        <a href="#">Payments</a>
+                        <a href="#">Invoices</a>
                         <a id="edit-profile-link" href="#">Profile</a>
                         <a href="/logout">Logout</a>
                     </div>
@@ -289,6 +289,12 @@
 
                 // Update the href of the edit profile link
                 document.getElementById('edit-profile-link').href = `/edit-profile.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+
+                // Update the href of the logo home link
+                document.getElementById('navbarhome').href = `/tenant.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+
+                // Update the href of the navbar home link
+                document.getElementById('navbarhome1').href = `/tenant.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
             })
             .catch(error => console.error(error));
     };
