@@ -138,7 +138,7 @@
                 document.getElementById('navbar').href = `/tenat.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
 
                 // Update the href of the contact us link
-                document.getElementById('contact-us').href = `/contact.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+                document.getElementById('contact-us').href = `/tenant-contact-us.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
             })
             .catch(error => console.error(error));
     };

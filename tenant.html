@@ -38,12 +38,12 @@
                 <div class="dropdown">
                     <button id="dropdown-button" onclick="toggleDropdown()"><i class='bx bx-chevron-down'></i></button>
                     <div id="dropdown-menu">
-                        <!-- <a href="tenant-dashboard.html?username=<username>&userType=<userType>">Dashboard</a> -->
-                        <a id="dashboard-link" href="#">Dashboard</a>
-                        <a href="#">Tenancies</a>
-                        <a href="#">Payments</a>
-                        <a href="#">Invoices</a>
-                        <a id="edit-profile-link" href="#">Profile</a>
+                        <li><a id="sidebar-dashboard" href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+                        <li><a id="tenancy" href="#"><i class='bx bx-home'></i>Tenancies</a></li>
+                        <li><a id="payment" href="#"><i class='bx bx-detail'></i>Payments</a></li>
+                        <li><a id="invoice" href="#"><i class='bx bx-coin-stack'></i>Invoices</a></li>
+                        <li><a id="edit-profile-link" href="#" class="edit-profile"><i class='bx bx bx-user'></i>Edit
+                                Profile</a></li>
                         <a href="/logout">Logout</a>
                     </div>
                 </div>
@@ -200,10 +200,20 @@
                 document.getElementById('account-name').textContent = user.name;
 
                 // Update the href of the anchor dashboard link
-                document.getElementById('dashboard-link').href = `/tenant-dashboard.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+                document.getElementById('sidebar-dashboard').href = `/tenant-dashboard.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
 
                 // Update the href of the edit profile link
                 document.getElementById('edit-profile-link').href = `/edit-profile.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+
+                // // Update the href of the  tenancy link
+                document.getElementById('tenancy').href = `/tenant-tenancy.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+
+                // // Update the href of the payment link
+                document.getElementById('payment').href = `/tenant-payment.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+
+                // // Update the href of the invoice link
+                document.getElementById('invoice').href = `/tenant-invoice.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+
 
                 // Update the href of the logo home link
                 document.getElementById('navbarhome').href = `/tenant.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;

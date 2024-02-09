@@ -20,9 +20,9 @@
         </a>
         <ul class="side-menu">
             <li class="active"><a id="sidebar-dashboard" href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
-            <li><a href="#"><i class='bx bx-home'></i>Tenancies</a></li>
-            <li><a href="#"><i class='bx bx-detail'></i>Payments</a></li>
-            <li><a href="#"><i class='bx bx-coin-stack'></i>Invoices</a></li>
+            <li><a id="tenancy" href="#"><i class='bx bx-home'></i>Tenancies</a></li>
+            <li><a id="payment" href="#"><i class='bx bx-detail'></i>Payments</a></li>
+            <li><a id="invoice" href="#"><i class='bx bx-coin-stack'></i>Invoices</a></li>
         </ul>
         <ul class="side-menu">
             <li><a id="edit-profile-link" href="#" class="edit-profile"><i class='bx bx bx-user'></i>Edit Profile</a></li>
@@ -190,8 +190,17 @@
             .then(user => {
                 // document.getElementById('account-name').textContent = user.name;
 
-                // // Update the href of the anchor dashboard link
+                // // Update the href of the dashboard link
                 document.getElementById('sidebar-dashboard').href = `/tenant-dashboard.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+
+                // // Update the href of the  tenancy link
+                document.getElementById('tenancy').href = `/tenant-tenancy.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+
+                // // Update the href of the payment link
+                document.getElementById('payment').href = `/tenant-payment.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+
+                // // Update the href of the invoice link
+                document.getElementById('invoice').href = `/tenant-invoice.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
 
                 // Update the href of the edit profile link
                 document.getElementById('edit-profile-link').href = `/edit-profile.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
