@@ -44,7 +44,7 @@
                         <li><a id="invoice" href="#"><i class='bx bx-coin-stack'></i>Invoices</a></li>
                         <li><a id="edit-profile-link" href="#" class="edit-profile"><i class='bx bx bx-user'></i>Edit
                                 Profile</a></li>
-                        <a href="/logout">Logout</a>
+                        <li><a href="/logout" class="logout"><i class='bx bx-log-out-circle'></i>Logout</a></li>
                     </div>
                 </div>
             </div>
@@ -221,7 +221,10 @@
                 // Update the href of the navbar home link
                 document.getElementById('navbarhome1').href = `/tenant.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
             })
-        // Fetch data from the server
+        // Get the username from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+
         fetch('/properties')
             .then(response => response.json())
             .then(properties => {
@@ -243,12 +246,35 @@
                             <i class='bx bx-bath'><span>${property.bathroom}</span></i>
                         </div>
                     </div>
+                    <button id="sentReq-${property._id}" class="btn" type="button">Sent Agreement Request</button>
                 </div>
             `;
                     propertiesContainer.innerHTML += propertyHtml;
                 });
+
+                // Add event listeners to the "Sent Agreement Request" buttons
+                properties.forEach(property => {
+                    const button = document.getElementById(`sentReq-${property._id}`);
+                    button.addEventListener('click', () => {
+                        // Send the username and the current date and time with the request
+                        const data = {
+                            username: username,
+                            date: new Date().toISOString()
+                        };
+
+                        fetch(`/properties/${property._id}/agreement-request`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(data),
+                        })
+                            .then(() => alert('Agreement request sent!'))
+                            .catch(error => console.error('There was an error sending the agreement request', error));
+                    });
+                });
             })
-            .catch(error => console.error(error));
+            .catch(error => console.error('There was an error fetching the properties', error));
     };
 </script>
 

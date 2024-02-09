@@ -33,6 +33,18 @@ const UserModel = mongoose.model('user', mySchema);
 // Create a model for the 'property' collection
 const PropertyModel = mongoose.model('property', mySchema);
 
+// Create a model for the 'agreement' collection
+const AgreementSchema = new mongoose.Schema({
+  tenantName: String,
+  date: Date,
+  propertyName: String,
+  propertyId: mongoose.Schema.Types.ObjectId,
+  ownerId: mongoose.Schema.Types.ObjectId
+});
+
+const Agreement = mongoose.model('Agreement', AgreementSchema);
+
+
 app.get('/users', (req, res) => {
   UserModel.find()
   .then(results => {
@@ -199,6 +211,33 @@ app.delete('/users/:id', async (req, res) => {
       console.error(err);
       res.status(500).json({ message: 'Server error' });
   }
+});
+
+app.post('/properties/:id/agreement-request', (req, res) => {
+  const { username, date } = req.body;
+
+  PropertyModel.findById(req.params.id)
+      .then(property => {
+          if (!property) {
+              console.log(`Property with ID ${req.params.id} not found`);
+              return res.status(404).send('Property not found');
+          }
+
+          const agreement = new Agreement({
+              tenantName: username,
+              date: new Date(date),
+              propertyName: property.name,
+              propertyId: property._id,
+              ownerId: property.userId
+          });
+
+          return agreement.save();
+      })
+      .then(() => res.send('Agreement request sent!'))
+      .catch(err => {
+          console.error('There was an error processing the agreement request', err);
+          res.status(500).send('There was an error processing the agreement request');
+      });
 });
 
 app.listen(port, () => {

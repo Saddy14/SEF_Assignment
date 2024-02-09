@@ -183,6 +183,7 @@
         const description = document.getElementById('description').value;
         const bedroom = document.getElementById('bedroom').value;
         const bathroom = document.getElementById('bathroom').value;
+        const isRented = false;
 
         // Get the username from the URL
         const urlParam = new URLSearchParams(window.location.search);
@@ -192,7 +193,7 @@
         const userId = urlParams.get('userId');
     
         // Create the property object
-        const property = { name, location, price, description, bedroom, bathroom, ownerName, userId };
+        const property = { name, location, price, description, bedroom, bathroom, ownerName, isRented,userId };
     
         // Send the property object to the server
         fetch('/add-property', {
