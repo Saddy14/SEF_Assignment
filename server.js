@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
@@ -39,7 +40,8 @@ const AgreementSchema = new mongoose.Schema({
   date: Date,
   propertyName: String,
   propertyId: mongoose.Schema.Types.ObjectId,
-  ownerId: mongoose.Schema.Types.ObjectId
+  ownerId: mongoose.Schema.Types.ObjectId,
+  status: String
 });
 
 const Agreement = mongoose.model('Agreement', AgreementSchema);
@@ -228,7 +230,8 @@ app.post('/properties/:id/agreement-request', (req, res) => {
               date: new Date(date),
               propertyName: property.name,
               propertyId: property._id,
-              ownerId: property.userId
+              ownerId: property.userId,
+              status: 'Pending'
           });
 
           return agreement.save();
@@ -280,6 +283,33 @@ app.put('/propertiesAdmin/:id', async (req, res) => {
       console.error('There was an error updating the property:', err);
       res.status(500).json({ success: false, message: 'There was an error updating the property' });
   }
+});
+
+app.get('/agreements', async (req, res) => {
+  try {
+      const ownerId = req.query.ownerId;
+      const agreements = await Agreement.find({ ownerId: ownerId });
+      res.json(agreements);
+  } catch (err) {
+      res.status(500).json({ message: err.message });
+  }
+});
+
+app.put('/agreements/:id', (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  // Update the status of the agreement in the database
+  Agreement.findByIdAndUpdate(id, { status: status }, { new: true })
+      .then(() => {
+          // If successful, return a 200 status
+          res.sendStatus(200);
+      })
+      .catch(error => {
+          // If an error occurred, return a 500 status
+          console.error(error);
+          res.status(500).send('An error occurred');
+      });
 });
 
 app.listen(port, () => {

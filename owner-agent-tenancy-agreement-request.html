@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="owner-agent.css">
-    <title>Owner / Agent | HomeWoW</title>
+    <title>Owner/Agent | HomeWoW</title>
     <link rel="icon" href="img/icon.png" type="image/x-icon">
 </head>
 
@@ -21,12 +21,14 @@
         <ul class="side-menu">
             <li><a id="sidebar-dashboard" href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
             <li><a id="my-property" href="#"><i class='bx bx-home'></i>My Property</a></li>
-            <li class="active"><a id="tenancy-agreement" href="#"><i class='bx bx-message-square-dots'></i>Tenancy Agreement<br>Request</a></li>
+            <li class="active"><a id="tenancy-agreement" href="#"><i class='bx bx-message-square-dots'></i>Tenancy
+                    Agreement<br>Request</a></li>
             <li><a id="payment-log" href="#"><i class='bx bx-detail'></i>Payment Log</a></li>
             <li><a id="appointment" href="#"><i class='bx bx-checkbox-checked'></i>Appointment</a></li>
         </ul>
         <ul class="side-menu">
-            <li><a id="edit-profile-link" href="#" class="edit-profile"><i class='bx bx bx-user'></i>Edit Profile</a></li>
+            <li><a id="edit-profile-link" href="#" class="edit-profile"><i class='bx bx bx-user'></i>Edit Profile</a>
+            </li>
             <li><a id="contact-us" href="#" class="contact-us"><i class='bx bx bx-phone'></i>Contact Us</a></li>
             <li><a href="/logout" class="logout"><i class='bx bx-log-out-circle'></i>Logout</a></li>
         </ul>
@@ -61,65 +63,35 @@
             <div class="header">
                 <div class="left">
                     <h1>Tenancy Agreement Request</h1>
-            </div>
-
-            <div class="bottom-data">
-                <div class="orders">
-                    <div class="header">
-                        <i class='bx bx-filter'></i>
-                        <i class='bx bx-search'></i>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>User</th>
-                                <th>Request Date</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><p>Wei Kiat</p></td>
-                                <td>03-01-2024</td>
-                                <td><span class="status process">Processing</span></td>
-                                <td><button class="accept" type="submit">Accept </button></td>
-                                <td><button class="reject" type="submit">Reject</button></td>
-                            </tr>
-
-                            <tr>
-                                <td><p>Sofia</p></td>
-                                <td>29-12-2023</td>
-                                <td><span class="status pending">Pending</span></td>
-                                <td><button class="accept" type="submit">Accept </button></td>
-                                <td><button class="reject" type="submit">Reject</button></td>
-                            </tr>
-
-                            <tr>
-                                <td><p>Jerome</p></td>
-                                <td>23-12-2023</td>
-                                <td><span class="status completed">Completed</span></td>
-                                <td><button class="accept" type="submit">Accept </button></td>
-                                <td><button class="reject" type="submit">Reject</button></td>
-                            </tr>
-
-                            <tr>
-                                <td><p>Sanjiv</p></td>
-                                <td>03-12-2023</td>
-                                <td><span class="status completed">Completed</span></td>
-                                <td><button class="accept" type="submit">Accept </button></td>
-                                <td><button class="reject" type="submit">Reject</button></td>
-                            </tr>
-
-                            <tr>
-                                <td><p>Daniel Imran</p></td>
-                                <td>27-11-2023</td>
-                                <td><span class="status completed">Completed</span></td>
-                                <td><button class="accept" type="submit">Accept </button></td>
-                                <td><button class="reject" type="submit">Reject</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
+
+                <div class="bottom-data">
+                    <div class="orders">
+                        <div class="header">
+                            <i class='bx bx-filter'></i>
+                            <i class='bx bx-search'></i>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Request Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p>Wei Kiat (Demo Req.)</p>
+                                    </td>
+                                    <td>MM-DD-YYYY</td>
+                                    <td><span class="status pending">Pending</span></td>
+                                    <td><button class="accept" type="submit">Accept </button></td>
+                                    <td><button class="reject" type="submit">Reject</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
         </main>
 
@@ -161,7 +133,89 @@
                 // Update the href of the contact us link
                 document.getElementById('contact-us').href = `/owner-agent-contact-us.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
             })
-            .catch(error => console.error(error));
+
+        // Get the userId from the URL
+        const urlParam = new URLSearchParams(window.location.search);
+        const userId = urlParam.get('userId');
+
+        fetch(`/agreements?ownerId=${userId}`)
+            .then(response => response.json())
+            .then(agreements => {
+                // Get the table body
+                const tbody = document.querySelector('.orders table tbody');
+
+                // Loop through the agreements
+                agreements.forEach(agreement => {
+                    // Create a new table row
+                    const tr = document.createElement('tr');
+
+                    // Create the table data
+                    const tdUser = document.createElement('td');
+                    const tdRequestDate = document.createElement('td');
+                    const tdStatus = document.createElement('td');
+                    const tdAccept = document.createElement('td');
+                    const tdReject = document.createElement('td');
+
+                    // Set the table data content
+                    tdUser.innerHTML = `<p>${agreement.tenantName}</p>`;
+                    tdRequestDate.textContent = new Date(agreement.date).toLocaleDateString();
+                    if (agreement.status) {
+                        tdStatus.innerHTML = `<id="${agreement._id}" span class="status ${agreement.status.toLowerCase()}">${agreement.status}</span>`;
+                    } else {
+                        tdStatus.textContent = 'No status';
+                    }
+
+                    // Create the accept button and add an event listener
+                    const acceptButton = document.createElement('button');
+                    acceptButton.textContent = 'Accept';
+                    acceptButton.className = 'accept';
+                    acceptButton.addEventListener('click', () => {
+                        fetch(`/agreements/${agreement._id}`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ status: 'Accepted' }),
+                        }).then(() => {
+                            tdStatus.innerHTML = `<span class="status completed">Active</span>`;
+                            tdAccept.remove();
+                            tdReject.remove();
+                        });
+                        // tdStatus.innerHTML = `<span class="status completed">Active</span>`;
+                        // tdAccept.remove();
+                        // tdReject.remove();
+                    });
+
+                    // Create the reject button and add an event listener
+                    const rejectButton = document.createElement('button');
+                    rejectButton.textContent = 'Reject';
+                    rejectButton.className = 'reject';
+                    rejectButton.addEventListener('click', () => {
+                        fetch(`/agreements/${agreement.id}`, {
+                            method: 'DELETE',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                        }).then(() => {
+                            tr.remove();
+                        });
+                        // tr.remove();
+                    });
+
+                    tdAccept.appendChild(acceptButton);
+                    tdReject.appendChild(rejectButton);
+
+                    // Append the table data to the table row
+                    tr.appendChild(tdUser);
+                    tr.appendChild(tdRequestDate);
+                    tr.appendChild(tdStatus);
+                    tr.appendChild(tdAccept);
+                    tr.appendChild(tdReject);
+
+                    // Append the table row to the table body
+                    tbody.appendChild(tr);
+                });
+            });
     };
 </script>
 
