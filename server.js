@@ -240,6 +240,48 @@ app.post('/properties/:id/agreement-request', (req, res) => {
       });
 });
 
+app.put('/properties/:id', async (req, res) => {
+  const { name, location, price, description, bedroom, bathroom, ownerName } = req.body;
+
+  try {
+      const property = await PropertyModel.findByIdAndUpdate(
+          req.params.id,
+          { name, location, price, description, bedroom, bathroom, ownerName },
+          { new: true, useFindAndModify: false }
+      );
+
+      if (!property) {
+          return res.status(404).json({ success: false, message: 'Property not found' });
+      }
+
+      res.json({ success: true, message: 'Property updated successfully', property });
+  } catch (err) {
+      console.error('There was an error updating the property:', err);
+      res.status(500).json({ success: false, message: 'There was an error updating the property' });
+  }
+});
+
+app.put('/propertiesAdmin/:id', async (req, res) => {
+  const { name, location, price, description, bedroom, bathroom } = req.body;
+
+  try {
+      const property = await PropertyModel.findByIdAndUpdate(
+          req.params.id,
+          { name, location, price, description, bedroom, bathroom },
+          { new: true, useFindAndModify: false }
+      );
+
+      if (!property) {
+          return res.status(404).json({ success: false, message: 'Property not found' });
+      }
+
+      res.json({ success: true, message: 'Property updated successfully', property });
+  } catch (err) {
+      console.error('There was an error updating the property:', err);
+      res.status(500).json({ success: false, message: 'There was an error updating the property' });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
