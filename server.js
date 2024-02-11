@@ -285,6 +285,7 @@ app.put('/propertiesAdmin/:id', async (req, res) => {
   }
 });
 
+// Get all agreements
 app.get('/agreements', async (req, res) => {
   try {
       const ownerId = req.query.ownerId;
@@ -295,6 +296,7 @@ app.get('/agreements', async (req, res) => {
   }
 });
 
+//Accept agreement
 app.put('/agreements/:id', (req, res) => {
   const { id } = req.params;
   const { status } = req.body;
@@ -309,6 +311,19 @@ app.put('/agreements/:id', (req, res) => {
           // If an error occurred, return a 500 status
           console.error(error);
           res.status(500).send('An error occurred');
+      });
+});
+
+// Delete an agreement
+app.delete('/agreements/:id', (req, res) => {
+  const agreementId = req.params.id;
+
+  Agreement.deleteOne({ _id: agreementId })
+      .then(() => {
+          res.status(200).send({ message: 'Agreement deleted successfully.' });
+      })
+      .catch((err) => {
+          res.status(500).send({ message: 'An error occurred while deleting the agreement.' });
       });
 });
 

@@ -520,6 +520,10 @@ body {
     background: var(--success);
 }
 
+.content main .bottom-data .orders table tr td .status.accepted {
+    background: var(--success);
+}
+
 .content main .bottom-data .orders table tr td .status.process {
     background: var(--primary);
 }
