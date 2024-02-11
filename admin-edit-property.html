@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="owner-agent.css">
+    <!-- <link rel="stylesheet" href="owner-agent.css"> -->
     <link rel="stylesheet" href="owner-agent-add-property.css">
-    <title>Owner/Agent | HomeWoW</title>
+    <link rel="stylesheet" href="admin.css">
+    <title>Admin | HomeWoW</title>
     <link rel="icon" href="img/icon.png" type="image/x-icon">
 </head>
 
@@ -15,23 +16,17 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <a id="sidebar" href="#" class="logo">
+        <a class="logo">
             <i class='bx bx-code-alt'></i>
             <div class="logo-name"><span>Home</span>WoW</div>
         </a>
         <ul class="side-menu">
             <li><a id="sidebar-dashboard" href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
-            <li class="active"><a id="my-property" href="#"><i class='bx bx-home'></i>My Property ><br>Edit Property</a>
-            </li>
-            <li><a id="tenancy-agreement" href="#"><i class='bx bx-message-square-dots'></i>Tenancy
-                    Agreement<br>Request</a></li>
-            <li><a id="payment-log" href="#"><i class='bx bx-detail'></i>Payment Log</a></li>
-            <li><a id="appointment" href="#"><i class='bx bx-checkbox-checked'></i>Appointment</a></li>
+            <li class="active"><a id="admin-property-management" href="#"><i class='bx bx bx-home'></i>Property Management<br>> Edit Property</a></li>
+            <li><a id="admin-user-management" href="#"><i class='bx bx-group'></i>User Management</a></li>
+            <li><a id="admin-payment-log" href="#"><i class='bx bx bx-detail'></i>Payment Log</a></li>
         </ul>
         <ul class="side-menu">
-            <li><a id="edit-profile-link" href="#" class="edit-profile"><i class='bx bx bx-user'></i>Edit Profile</a>
-            </li>
-            <li><a id="contact-us" href="#" class="contact-us"><i class='bx bx bx-phone'></i>Contact Us</a></li>
             <li><a href="/logout" class="logout"><i class='bx bx-log-out-circle'></i>Logout</a></li>
         </ul>
     </div>
@@ -54,9 +49,9 @@
                 <i class='bx bx-bell'></i>
                 <span class="count">0</span>
             </a>
-            <a id="navbar" href="#" class="profile">
+            <!-- <a class="profile">
                 <i class='bx bx-home-alt-2'></i>
-            </a>
+            </a> -->
         </nav>
 
         <!-- End of Navbar -->
@@ -64,19 +59,19 @@
         <main>
             <div class="header">
                 <div class="left">
-                    <h1>Edit Property Information & Upload New Documents</h1>
+                    <h1>Edit Property Information</h1>
                 </div>
                 <div class="bottom-data">
                     <div class="orders">
 
-                        <label class="btn btn-outline-primary">
+                        <!-- <label class="btn btn-outline-primary">
                             Upload new photo
                             <input type="file" class="account-settings-fileinput">
                         </label> &nbsp;
                         <label class="btn btn-outline-primary">
                             Upload Property Documents
                             <input type="file" class="account-settings-fileinput">
-                        </label> &nbsp;
+                        </label> &nbsp; -->
 
                         <div class="form-group">
                             <label class="form-label">Property Name</label>
@@ -151,46 +146,25 @@
             .then(user => {
                 // document.getElementById('account-name').textContent = user.name;
 
-                // Update the href of the anchor dashboard link
-                document.getElementById('sidebar-dashboard').href = `/owner-agent-dashboard.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
-
-                // Update the href of the edit profile link
-                document.getElementById('edit-profile-link').href = `/edit-profile.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
-
-                // Update the href of the sidebar home link
-                document.getElementById('sidebar').href = `/owner-agent.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
-
-                // Update the href of the navbar home link
-                document.getElementById('navbar').href = `/owner-agent.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+                // // Update the href of the anchor dashboard link
+                document.getElementById('sidebar-dashboard').href = `/admin-dashboard.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
 
                 // Update the href of the my property link
-                document.getElementById('my-property').href = `/owner-agent-my-property.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+                document.getElementById('admin-property-management').href = `/admin-property-management.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
 
-                // Update the href of the tenancy agreement link
-                document.getElementById('tenancy-agreement').href = `/owner-agent-tenancy-agreement-request.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+                // Update the href of the user management link
+                document.getElementById('admin-user-management').href = `/admin-user-management.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
 
                 // Update the href of the payment log link
-                document.getElementById('payment-log').href = `/owner-agent-payment-log.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+                document.getElementById('admin-payment-log').href = `/admin-payment-log.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
 
-                // Update the href of the appointment link
-                document.getElementById('appointment').href = `/owner-agent-appointment.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
-
-                // Update the href of the contact us link
-                document.getElementById('contact-us').href = `/owner-agent-contact-us.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
-
-
-                document.getElementById('go-back').href = `/owner-agent-my-property.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
+                document.getElementById('go-back').href = `/admin-property-management.html?username=${user.name}&userType=${user.userType}&userId=${user.id}`;
             })
             .catch(error => console.error(error));
     };
 </script>
 <script>
-    let ownerName = '';
-    fetch('/current-user')
-        .then(response => response.json())
-        .then(user => {
-            ownerName = user.name;
-        });
+   
     document.getElementById('save-changes-button').addEventListener('click', function () {
         // Get the form data
         const name = document.getElementById('name').value;
@@ -211,12 +185,11 @@
             price,
             description,
             bedroom,
-            bathroom,
-            ownerName
+            bathroom
         };
 
         // Make a PUT request to the server
-        fetch(`/properties/${propertyId}`, {
+        fetch(`/propertiesAdmin/${propertyId}`, {
             method: 'put',
             headers: {
                 'Content-Type': 'application/json'
@@ -227,7 +200,7 @@
             .then(data => {
                 if (data.success) {
                     alert('Property updated successfully!');
-                    document.getElementById('my-property').click();
+                    document.getElementById('admin-property-management').click();
                 } else {
                     alert('There was an error updating the property');
                 }

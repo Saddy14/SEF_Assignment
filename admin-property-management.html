@@ -78,7 +78,7 @@
                                     <i class='bx bx-bath'><span>2</span></i>
                                 </div>
                             </div>
-                            <button class="remove" type="submit">Remove</button>
+                            <!-- <button class="remove" type="submit">Remove</button> -->
                         </div>
                 </section>
         </main>
@@ -130,6 +130,7 @@
                             <i class='bx bx-bath'><span>${property.bathroom}</span></i>
                         </div>
                     </div>
+                    <button id="edit-${property._id}" class="edit" type="submit">Edit</button>
                     <button id="remove-${property._id}" class="remove" type="submit">Remove</button>
                 </div>
             `;
@@ -141,6 +142,7 @@
                         const id = event.target.id.split('-')[1];
                         // Handle edit
                         console.log(`Edit button clicked for property ${id}`);
+                        window.location.href = `/admin-edit-property.html?propertyId=${id}`;
                     } else if (event.target.classList.contains('remove')) {
                         const id = event.target.id.split('-')[1];
                         // Handle remove
