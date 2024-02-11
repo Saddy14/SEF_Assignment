@@ -92,9 +92,9 @@ app.post('/login', (req, res) => {
 });
 
 app.post('/signup', (req, res) => {
-  const { name, password, email, phone, gender, userType } = req.body;
+  const { name, password, email, icNum, phone, gender, userType } = req.body;
 
-  const newUser = new UserModel({ name, password, email, phone, gender, userType });
+  const newUser = new UserModel({ name, password, email, icNum, phone, gender, userType });
 
   newUser.save()
     .then(() => res.redirect('/login.html'))
