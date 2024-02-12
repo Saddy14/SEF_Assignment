@@ -169,6 +169,10 @@ body {
     justify-content: center;
 }
 
+.sidebar .side-menu li a.contact-us{
+    color: var(--main-color);
+}
+
 .sidebar .side-menu li a.logout {
     color: var(--danger);
 }
