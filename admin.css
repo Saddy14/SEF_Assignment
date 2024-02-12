@@ -760,6 +760,69 @@ section {
     margin-right: auto;
 }
 
+/* Contact */
+.contact {
+    background: #fbfbfb;
+    border-radius: 2rem;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+    gap: 3rem;
+    padding: 0 50px;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+}
+
+.contact-container .box {
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    background: var(--bg-color);
+    padding: 10px;
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow);
+}
+
+.contact-container .box img {
+    max-width: fit-content;
+    height: 220px;
+}
+
+.contact-container .box h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-top: 10px;
+}
+
+.contact-container .box .content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.contact-container .box .content .icon {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 5px;
+    font-size: 2rem;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.contact-container .box .content .icon .bx {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+}
+
+.contact-container .box .content .icon span {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
 @media screen and (max-width: 768px) {
     .sidebar {
         width: 200px;
