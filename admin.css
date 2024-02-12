@@ -583,14 +583,6 @@ body {
     font-weight: 700;
 }
 
-.content main .bottom-data .orders table tr td .user-type.owner-agent {
-    background: skyblue;
-}
-
-.content main .bottom-data .orders table tr td .user-type.tenant {
-    background: lightsteelblue;
-}
-
 /* Properties */
 .properties {
     border-radius: 2rem;
