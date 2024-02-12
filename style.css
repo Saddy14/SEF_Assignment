@@ -481,7 +481,7 @@ select {
 
 .contact-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, auto));
+    grid-template-columns: repeat(auto-fit, minmax(300px, auto));
     gap: 3rem;
     padding: 0 50px;
     margin-top: 10rem;
