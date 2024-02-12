@@ -412,7 +412,7 @@ header {
     display: grid;
     grid-template-columns: 0.4fr 1fr;
     align-items: center;
-    min-height: 100vh;
+    min-height: 110vh;
     margin-top: 2rem;
 }
 
