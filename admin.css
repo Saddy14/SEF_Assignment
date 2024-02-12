@@ -771,7 +771,6 @@ section {
     grid-template-columns: repeat(auto-fit, minmax(300px, auto));
     gap: 3rem;
     padding: 0 50px;
-    margin-top: 10rem;
     margin-bottom: 10rem;
 }
 
