@@ -782,6 +782,8 @@ section {
     padding: 10px;
     border-radius: 1rem;
     box-shadow: var(--box-shadow);
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 }
 
 .contact-container .box img {
@@ -820,7 +822,6 @@ section {
     font-size: 18px;
     font-weight: 500;
 }
-
 
 @media screen and (max-width: 768px) {
     .sidebar {
