@@ -1,6 +1,7 @@
 # Software Engineering Fundamentals Project
 
 **System Overview**
+
 The HomeWoW web app is a comprehensive property management platform
 designed to enhance the user experience through a robust verification system.
 Ensuring the integrity of the rental process, the system implements a thorough
