@@ -38,3 +38,10 @@ efficiency, and transparency for property owners, agents, and tenants.
 - web-app Prototype
 - Software Testing
 - Final Report
+
+**Tools used for web-app**
+- Front-end: HTML & CSS
+- Back-end: NodeJS(Javascript)
+- Database: MongoDB
+
+Protype & Testing done as localhost
