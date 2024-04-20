@@ -45,3 +45,13 @@ efficiency, and transparency for property owners, agents, and tenants.
 - Database: MongoDB
 
 Protype & Testing done as localhost
+
+**Contributions**
+
+| Name          | Actor               |
+|---------------|---------------------|
+| SADMAN ZULFIQUER | Owner/Agent      |
+| TAN TENG HUI  | Tenant              |
+| TENG WEI JOE  | Admin               |
+| HO TECK FUNG  | Searcher & Admin    |
+
